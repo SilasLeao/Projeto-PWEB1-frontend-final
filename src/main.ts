@@ -1,6 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { AppRoutingModule } from './app/app-routing.module';
 
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(AppComponent, {
+  providers: [
+    AppRoutingModule // Passar o módulo de roteamento aqui
+  ]
+})
   .catch((err) => console.error(err));

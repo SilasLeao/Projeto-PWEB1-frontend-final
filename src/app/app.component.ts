@@ -6,7 +6,9 @@ import {AppModule} from './app.module';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  standalone: true,
+  imports: [
+    AppModule
+  ],
   styleUrl: './app.component.css'
 })
 export class AppComponent {
