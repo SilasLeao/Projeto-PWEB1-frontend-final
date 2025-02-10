@@ -8,7 +8,7 @@ import {RegisterComponent} from './components/register/register.component';
   standalone: true,
   styleUrl: './app.component.css',
   imports: [
-    RouterOutlet, RegisterComponent
+    RouterOutlet
   ]
 })
 export class AppComponent {

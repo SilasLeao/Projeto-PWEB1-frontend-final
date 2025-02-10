@@ -5,11 +5,11 @@ import {NgModule} from '@angular/core';
 import {FeedComponent} from './components/feed/feed.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'feed', component: FeedComponent },
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
-  { path: '**', redirectTo: 'register' }
+
 ];
 
 @NgModule({
