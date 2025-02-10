@@ -1,3 +1,10 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "65fa",
+      "username": "leaosilas",
+      "email": "leaosilas@gmail.com",
+      "password": "asdf"
+    }
+  ]
 }
