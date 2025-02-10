@@ -1,3 +1,84 @@
-h2 {
-  background-color: lightblue; /* Para verificar se a página está carregando */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://img.freepik.com/fotos-premium/estado-da-bandeira-do-paraiba-no-brasil_2227-695.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: opacity(0.85) blur(2px); /* Aplica o desfoque na imagem */
+  z-index: -1; /* Coloca a imagem atrás do conteúdo */
+}
+
+.registerContainer {
+  gap: 1rem;
+  color: #e4e4e4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+  width: 20%;
+  position: relative;
+  z-index: 1; /* Mantém o formulário acima da imagem */
+  background: rgba(47, 47, 47, 0.95);
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+input {
+  color: #cdcdcd;
+  background-color: rgb(30, 30, 30);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+::placeholder {
+  color: #9e9c9c
+}
+
+button {
+  background-color: #B10000;
+  color: honeydew;
+  padding: .75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #cf2828;
+}
+
+a {
+  color: #B10000
+}
+
+a:hover {
+  color: #cf2828;
 }
