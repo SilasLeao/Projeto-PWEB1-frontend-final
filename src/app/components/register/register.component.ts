@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // Importe o FormsModule
 import { CommonModule } from '@angular/common'; // Importe o CommonModule
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common'; // Importe o CommonModule
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule] // Adicione FormsModule nos imports
+  imports: [FormsModule, CommonModule, RouterLink] // Adicione FormsModule nos imports
 })
 export class RegisterComponent {
   username: string = '';
@@ -23,6 +23,13 @@ export class RegisterComponent {
     // Validação básica
     if (!this.username || !this.email || !this.password) {
       this.errorMessage = 'Por favor, preencha todos os campos.';
+      return;
+    }
+
+    // Validação de email (usando expressão regular)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(this.email)) {
+      this.errorMessage = 'Por favor, insira um email válido.';
       return;
     }
 
@@ -46,6 +53,7 @@ export class RegisterComponent {
         this.http.post('http://localhost:3000/users', newUser).subscribe({
           next: () => {
             alert('Cadastro realizado com sucesso!');
+            localStorage.setItem('username', this.username);
             this.router.navigate(['/feed']); // Redireciona para a página de feed
           },
           error: (err) => {
