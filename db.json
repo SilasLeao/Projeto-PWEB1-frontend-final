@@ -21,8 +21,8 @@
       "time": "Há 17 minutos",
       "info": "Imposto Predial e Territorial Urbano (IPTU) e a Taxa de Coleta de Resíduos (TCR) sofreram um reajuste de 4,87% no exercício de 2025. Desconto nos impostos pode chegar a até 20%.",
       "hiddenText": "Os boletos de pagamento do Imposto Predial e Territorial Urbano (IPTU) e a Taxa de Coleta de Resíduos (TCR) de João Pessoa começaram a ser entregues pelos Correios nas residências. Quem ainda não recebeu, ou quer pagar parcelado, também pode adquirir o documento através do Portal do Contribuinte. Os valores sofreram um reajuste de 4,87% no exercício de 2025, segundo a Prefeitura de João Pessoa.\n\nSegundo a administração municipal, o reajuste considera o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado entre novembro de 2023 e novembro de 2024.\n\nDe acordo com a Prefeitura de João Pessoa, os contribuintes poderão optar pelo pagamento em cota única com 15% de desconto até o dia 14 de março, pelo parcelamento em até 10 vezes ou pela cota única sem desconto, com vencimento no dia 7 de abril.\n\nAlém do desconto na cota única, será aplicado um abatimento adicional de 5% para os contribuintes que estavam em dia com a prefeitura até 31 de dezembro. Apenas no caso do pagamento em cota única, o desconto totaliza 20%.\n\nO desconto adicional de 5% é válido para todos os contribuintes em dia, independentemente da forma de pagamento escolhida. Para aqueles que optarem pelo parcelamento, o abatimento de 5% será calculado automaticamente no boleto.",
-      "like": 28,
-      "dislike": 10,
+      "like": 32,
+      "dislike": 11,
       "expanded": false
     },
     {
@@ -115,27 +115,6 @@
     }
   ],
   "complaints": [
-    {
-      "id": "5735",
-      "imgUrl": "https://s2-g1.glbimg.com/TpxCzXE20XZVW44LoYfWjffq4dI=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/P/n/f0hNZMTWy5lXkVo6EOWw/incendio-galpao-de-reciclaveis.jpg",
-      "title": "Incêndio atinge e destrói parte de galpão de materiais recicláveis em Santa Rita",
-      "time": "Há 5 horas",
-      "info": "Estabelecimento fica perto de área residencial, mas não há registro de feridos por conta do fogo.",
-      "hiddenText": "Um incêndio de grandes proporções atingiu e destruiu parte de um galpão de materiais recicláveis localizado em Santa Rita, na Região Metropolitana de João Pessoa, no fim da noite do sábado (8).\n\nSegundo o Corpo de Bombeiros, o fogo começou a se espalhar por volta das 23h. Vários produtos e parte da estrutura do espaço foram destruídos pelas chamas.\n\nO local fica próximo a uma área residencial, inclusive perto de um condomínio. Mas também de acordo com os bombeiros, não há registro de pessoas feridas por conta do incêndio.\n\nMesmo com o fogo controlado durante a madrugada, na manhã deste domingo (9) ainda existem focos do incêndio no local.\n\nPor isso, equipes de bombeiros continuam no galpão para evitar que as chamas se espalhem novamente.\n\nPor enquanto, ainda não é possível dizer o que causou o incêndio.",
-      "like": 95,
-      "dislike": "16",
-      "expanded": false
-    },
-    {
-      "id": 3337,
-      "imgUrl": "Bandeira_da_Paraíba.svg.png",
-      "title": "Teste",
-      "time": "Há 1 minuto",
-      "info": "testando",
-      "hiddenText": "sfadsfadasdfasdfsafdfasd",
-      "like": 0,
-      "dislike": 0,
-      "expanded": false
-    }
+
   ]
 }

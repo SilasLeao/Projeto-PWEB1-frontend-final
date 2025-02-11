@@ -47,5 +47,6 @@ export class PostListComponent implements OnInit {
         console.error('Erro ao atualizar o dislike:', err);
       }
     });
+    console.log()
   }
 }

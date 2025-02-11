@@ -1,5 +1,5 @@
 export interface Complaints {
-  id: number;
+  id: string;
   imgUrl: string;
   title: string;
   time: string;

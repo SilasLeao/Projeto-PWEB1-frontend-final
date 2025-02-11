@@ -1,7 +1,7 @@
 <div class="postFeed">
   <div *ngFor="let complaints of complaintsList" class="postContainer">
     <div class="post">
-      <img [src]="complaints.imgUrl" alt="Imagem da notícia" class="postImage">
+      <img [src]="'http://localhost:3200/assets/imgs/' + complaints.imgUrl" alt="Imagem da notícia" class="postImage">
       <div class="postContent">
         <h2>{{ complaints.title }}</h2>
         <p class="info">{{ complaints.info }}</p>

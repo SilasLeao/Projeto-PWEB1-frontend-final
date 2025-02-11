@@ -41,6 +41,7 @@
 .postImage {
   border-radius: 30px;
   width: 40%;
+  max-height: 300px;
 
 }
 

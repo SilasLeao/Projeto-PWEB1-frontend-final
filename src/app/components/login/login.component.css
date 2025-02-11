@@ -22,7 +22,7 @@
 
 .imgContainer {
   height: 75%;
-  background-image: url("../../assets/imgs/loginImg.svg");
+  background-image: url("../../backend/assets/imgs/loginImg.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

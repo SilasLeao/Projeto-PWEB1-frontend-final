@@ -21,7 +21,6 @@ export class ComplaintListComponent implements OnInit {
   @Input() complaintsList: Complaints[] = [];
 
   constructor(private complaintsService: ComplaintsService) {}
-
   ngOnInit(): void {}
 
   toggleExpand(complaints: Complaints) {
