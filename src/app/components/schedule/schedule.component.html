@@ -1,0 +1,53 @@
+<div class="container">
+  <header>
+    <button class="menuButton" mat-icon-button [matMenuTriggerFor]="mainMenu">
+      <mat-icon class="menu">menu</mat-icon>
+    </button>
+    <p class="logo">JP Online</p>
+    <div class="userInfo">
+      <span>Olá, {{ username }}</span>
+      <mat-icon>account_circle</mat-icon>
+    </div>
+
+    <!-- Menu principal -->
+    <mat-menu #mainMenu="matMenu">
+      <button mat-menu-item (click)="navigateToFeed()">Notícias</button>
+      <button mat-menu-item (click)="navigateToComplaint()">Denúncias</button>
+      <button mat-menu-item (click)="logout()">Sair</button>
+    </mat-menu>
+
+  </header>
+  <div class="content">
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button (click)="prevMonth()">&#9664;</button>
+        <h2>{{ monthNames[currentMonth] }} {{ currentYear }}</h2>
+        <button (click)="nextMonth()">&#9654;</button>
+      </div>
+
+      <table class="calendar">
+        <thead>
+        <tr>
+          <th *ngFor="let day of weekDays">{{ day }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let week of calendar">
+          <td *ngFor="let day of week" [class.empty]="!day">
+            <div *ngIf="day">
+              <strong>{{ day }}</strong>
+              <ul>
+                <li *ngFor="let event of getEvents(day)">
+                  {{ event }}
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

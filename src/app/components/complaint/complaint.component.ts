@@ -47,7 +47,7 @@ export class ComplaintComponent implements OnInit {
 
   openForm() {
     this.formOpen = true;
-    this.formService.openForm(); // 🔥 Chama o serviço para abrir o formulário
+    this.formService.openForm();
   }
 
   closeForm() {
@@ -62,6 +62,10 @@ export class ComplaintComponent implements OnInit {
 
   navigateToFeed() {
     this.router.navigate(['/feed']);
+  }
+
+  navigateToSchedule() {
+    this.router.navigate(['/schedule']);
   }
 
   logout() {

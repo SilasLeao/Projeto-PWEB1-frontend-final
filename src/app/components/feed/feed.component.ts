@@ -42,6 +42,10 @@ export class FeedComponent implements OnInit {
     this.router.navigate(['/complaint']);
   }
 
+  navigateToSchedule() {
+    this.router.navigate(['/schedule']);
+  }
+
   logout() {
     localStorage.removeItem('username');
     this.router.navigate(['/login']);

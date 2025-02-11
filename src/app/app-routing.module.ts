@@ -4,6 +4,7 @@ import { RegisterComponent } from './components/register/register.component';
 import {NgModule} from '@angular/core';
 import {FeedComponent} from './components/feed/feed.component';
 import {ComplaintComponent} from './components/complaint/complaint.component';
+import {ScheduleComponent} from './components/schedule/schedule.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'feed', component: FeedComponent },
   { path: 'complaint', component: ComplaintComponent },
+  { path: 'schedule', component: ScheduleComponent },
 
 ];
 

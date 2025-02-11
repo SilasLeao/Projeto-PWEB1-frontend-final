@@ -11,7 +11,7 @@
 
     <mat-menu #mainMenu="matMenu">
       <button mat-menu-item (click)="navigateToFeed()">Notícias</button>
-      <button mat-menu-item>Calendário de Eventos</button>
+      <button mat-menu-item (click)="navigateToSchedule()">Calendário de Eventos</button>
       <button mat-menu-item (click)="logout()">Sair</button>
     </mat-menu>
   </header>

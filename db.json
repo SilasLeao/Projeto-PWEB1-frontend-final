@@ -116,5 +116,42 @@
   ],
   "complaints": [
 
+  ],
+  "events": [
+    {
+      "id": "8765",
+      "date": "2025-02-05",
+      "description": ["Inauguração Rock Burguer"]
+    },
+    {
+      "id": "6345",
+      "date": "2025-02-08",
+      "description": ["Peça Pequeno Príncipe no Espaço Cultural"]
+    },
+    {
+      "id": "9674",
+      "date": "2025-02-10",
+      "description": ["Maratona Beneficente na Orla"]
+    },
+    {
+      "id": "1463",
+      "date": "2025-02-14",
+      "description": ["Feira de Artesanato"]
+    },
+    {
+      "id": "6357",
+      "date": "2025-02-16",
+      "description": ["Exposição na Estação Ciência"]
+    },
+    {
+      "id": "5333",
+      "date": "2025-02-20",
+      "description": ["Show ao Vivo", "Exposição de Fotografia"]
+    },
+    {
+      "id": "6344",
+      "date": "2025-02-25",
+      "description": ["Festival de Comida"]
+    }
   ]
 }
