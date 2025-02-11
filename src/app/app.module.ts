@@ -8,10 +8,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FeedComponent } from './components/feed/feed.component';
 import {BrowserModule} from '@angular/platform-browser';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
-    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -20,6 +23,7 @@ import {BrowserModule} from '@angular/platform-browser';
     HttpClientModule,
     AppRoutingModule,
     RegisterComponent,
+    LoginComponent
   ],
   providers: [],
   exports: [

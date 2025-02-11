@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None,
   imports: [
     FormsModule,
     RouterLink,

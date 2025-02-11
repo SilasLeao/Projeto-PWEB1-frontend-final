@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.postFeed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1E1E1E;
+  padding-top: 10vh;
+  height: 84vh; /* Ajustado para ocupar o restante da tela */
+  width: 100vw;
+  overflow-y: auto; /* Para rolagem interna do feed */
+  gap: 6rem;
+}
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 80%;
+  align-items: center;
+  gap: 4rem;
+}
+
+.post {
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  width: 80%;
+  gap: 1rem;
+  font-family: sans-serif;
+  align-items: center;
+}
+
+.post h2 {
+  color: #cf2828;
+}
+
+.postImage {
+  border-radius: 30px;
+  width: 40%;
+
+}
+
+.postContent {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info {
+  color: #c8c8c8;
+}
+
+.time {
+  color: #636363;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: honeydew;
+}
+
+.like, .dislike {
+  color: honeydew;
+  transition: 0.3s;
+}
+
+.likeButton span, .dislikeButton span {
+  transition: 0.3s;
+}
+
+.likeButton:hover, .dislikeButton:hover {
+  color: #cf2828; /* Aplica a cor no ícone e no número */
+  background-color: rgba(255, 0, 0, 0.22);
+
+}
+
+.likeButton:hover mat-icon, .dislikeButton:hover mat-icon {
+  color: inherit; /* Garante que o ícone herde a cor aplicada ao botão */
+  scale: 1.1;
+}
+
+.likeButton:hover span, .dislikeButton:hover span {
+  color: inherit; /* Garante que o número herde a cor aplicada ao botão */
+  scale: 1.1;
+}
+
+.postExpand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 80%;
+}
+
+.chevron {
+  color: #c8c8c8;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.chevron:hover {
+  cursor: pointer;
+  scale: 1.2;
+  color: #B10000;
+}
+
+hr  {
+  background-color: #bcbcbc;
+  height: 1px;
+  width: 100%;
+}
+
+.expandedContent {
+  width: 50%;
+  color: #C8C8C8;
+  text-align: center;
+}
+
+.postFeed::-webkit-scrollbar {
+  background-color: #1E1E1E;
+  width: 8px;
+}
+
+.postFeed::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 10px;
+}

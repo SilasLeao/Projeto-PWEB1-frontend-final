@@ -1,26 +1,30 @@
 <div class="container">
-  <div class="imgContainer"></div>
-  <div class="registerContainer">
-    <h1>Cadastrar-se</h1>
+  <div class="leftContainer">
+    <div class="imgContainer"></div>
+  </div>
+  <div class="rightContainer">
+    <div class="registerContainer">
+      <h1>Cadastrar-se</h1>
 
-    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
 
-    <section>
-      <label for="username">Nome:</label>
-      <input id="username" type="text" [(ngModel)]="username" placeholder="Seu nome de usuário">
-    </section>
+      <section>
+        <label for="username">Nome:</label>
+        <input id="username" type="text" [(ngModel)]="username" placeholder="Seu nome de usuário">
+      </section>
 
-    <section>
-      <label for="email">Email:</label>
-      <input id="email" type="email" [(ngModel)]="email" placeholder="exemplo@email.com">
-    </section>
+      <section>
+        <label for="email">Email:</label>
+        <input id="email" type="email" [(ngModel)]="email" placeholder="exemplo@email.com">
+      </section>
 
-    <section>
-      <label for="password">Senha:</label>
-      <input id="password" type="password" [(ngModel)]="password">
-    </section>
+      <section>
+        <label for="password">Senha:</label>
+        <input id="password" type="password" [(ngModel)]="password">
+      </section>
 
-    <button (click)="registerUser()">Cadastrar-se</button>
-    <a routerLink="/login">Já possui uma conta?</a>
+      <button (click)="registerUser()">Cadastrar-se</button>
+      <a routerLink="/login">Já possui uma conta?</a>
+    </div>
   </div>
 </div>

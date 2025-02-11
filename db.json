@@ -5,6 +5,47 @@
       "username": "leaosilas",
       "email": "leaosilas@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "dc54",
+      "username": "asdfasdf",
+      "email": "mizerinha@mizera.com",
+      "password": "asd"
+    }
+  ],
+  "news": [
+    {
+      "id": "4376",
+      "imgUrl": "https://s2-g1.glbimg.com/pByg3d17_9OjQb3iwRWuRK87Bhc=/0x17:1700x973/1080x608/smart/filters:max_age(3600)/http://s.glbimg.com/jo/g1/f/original/2017/01/25/joao_pessoa_iptu.jpg",
+      "title": "Boletos do IPTU e TCR 2025 começam a ser entregues em João Pessoa",
+      "time": "Há 17 minutos",
+      "info": "Imposto Predial e Territorial Urbano (IPTU) e a Taxa de Coleta de Resíduos (TCR) sofreram um reajuste de 4,87% no exercício de 2025. Desconto nos impostos pode chegar a até 20%.",
+      "hiddenText": "Os boletos de pagamento do Imposto Predial e Territorial Urbano (IPTU) e a Taxa de Coleta de Resíduos (TCR) de João Pessoa começaram a ser entregues pelos Correios nas residências. Quem ainda não recebeu, ou quer pagar parcelado, também pode adquirir o documento através do Portal do Contribuinte. Os valores sofreram um reajuste de 4,87% no exercício de 2025, segundo a Prefeitura de João Pessoa.",
+      "like": 28,
+      "dislike": 10,
+      "expanded": false
+    },
+    {
+      "id": "4945",
+      "imgUrl": "https://s2-g1.glbimg.com/ejwVVfXUneH-EZcbCXaWZZqIcqg=/0x0:1920x1080/1080x608/smart/filters:max_age(3600)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/P/4/2Gx8DdR0OlwdTTSxnBLA/sine-pb.jpg",
+      "title": "Paraíba tem 2.080 vagas de emprego oferecidas pelos Sines",
+      "time": "Há 49 minutos",
+      "info": "Confira as vagas de emprego oferecidas pelo Sine Paraíba, Sine João Pessoa e Sine Campina Grande.",
+      "hiddenText": "O Sine Paraíba (Sine-PB) está disponibilizando 1.273 vagas de emprego em 12 cidades: João Pessoa, Campina Grande, Bayeux, Santa Rita, Mamanguape,Cabedelo, Sapé, Patos, Guarabira, Cajazeiras, São Bento e Conde.\n\nEm João Pessoa, são 682 vagas disponíveis, com destaque para operador de telemarketing ativo e receptivo (500), auxiliar de limpeza (20) e ajudante de carga e descarga de mercadoria (15).",
+      "like": 38,
+      "dislike": "2",
+      "expanded": false
+    },
+    {
+      "id": "5198",
+      "imgUrl": "https://s2-g1.glbimg.com/DKfja16xVmSznem1om-FQ-vYhd0=/0x86:760x514/1080x608/smart/filters:max_age(3600)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/A/q/BgYEKTRHOB6hHWAJx49A/land.jpg",
+      "title": "Ex-presidente do Sindicato dos Jornalistas da Paraíba, Land Seixas morre aos 74 anos",
+      "time": "Há 1 hora",
+      "info": "Sindicalista estava internado há algumas semanas no Hospital Metropolitano de Santa Rita com problemas pulmonares.",
+      "hiddenText": "Morreu na noite desse domingo (9) o jornalista Land Seixas, que durante muitos anos foi o presidente do Sindicato dos Jornalistas Profissionais do Estado da Paraíba.\n\nEle estava internado há algumas semanas no Hospital Metropolitano de Santa Rita com problemas pulmonares. Nessa última noite, ele teve o quadro agravado e morreu após sofrer uma parada cardíaca.\n\nO velório e o enterro vão acontecer ambos em João Pessoa. O velório começa a partir das 18h desta segunda-feira (10), na Central de Velório Morada da Paz, e o enterro está marcado para às 11h desta terça-feira (11), no Cemitério da Boa Sentença.",
+      "like": "30",
+      "dislike": "1",
+      "expanded": false
     }
   ]
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // Importe o FormsModule
-import { CommonModule } from '@angular/common'; // Importe o CommonModule
+import {CommonModule, NgOptimizedImage} from '@angular/common'; // Importe o CommonModule
 
 @Component({
   selector: 'app-register',

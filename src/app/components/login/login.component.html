@@ -1,20 +1,28 @@
 <div class="container">
-  <div class="imgContainer"></div>
-  <div class="loginContainer">
-    <h1>Fazer Login</h1>
+  <div class="leftContainer">
+    <div class="imgContainer"></div>
+  </div>
+  <div class="rightContainer">
+    <div class="loginContainer">
+      <h1>Fazer Login</h1>
 
-    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-    <section>
-      <label for="email">Email:</label>
-      <input id="email" type="email" [(ngModel)]="email" placeholder="exemplo@email.com">
-    </section>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+      <section>
+        <label for="email">Email:</label>
+        <input id="email" type="email" [(ngModel)]="email" placeholder="exemplo@email.com">
+      </section>
 
-    <section>
-      <label for="password">Senha:</label>
-      <input id="password" type="password" [(ngModel)]="password">
-    </section>
+      <section>
+        <label for="password">Senha:</label>
+        <input id="password" type="password" [(ngModel)]="password">
+      </section>
 
-    <button (click)="logIn()">Fazer Login</button>
-    <a routerLink="/register">Ainda não possui uma conta?</a>
+      <button (click)="logIn()">Fazer Login</button>
+      <div class="google">
+        <i class="fa-brands fa-google"></i>
+      </div>
+      <a routerLink="/register">Ainda não possui uma conta?</a>
+
+    </div>
   </div>
 </div>
