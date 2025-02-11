@@ -3,13 +3,14 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
   z-index: 5;
 }
 
 .form-container {
-  background: black;
+  background: #ff7171;
   padding: 20px;
   border-radius: 8px;
   width: 300px;
@@ -17,6 +18,7 @@
 
 form mat-form-field {
   width: 100%;
+
 }
 
 button {

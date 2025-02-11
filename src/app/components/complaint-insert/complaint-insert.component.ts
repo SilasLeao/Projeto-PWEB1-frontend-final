@@ -29,7 +29,7 @@ export class ComplaintInsertComponent {
   selectedFile: File | null = null
   isFormVisible: boolean = false;
 
-  constructor(private fb: FormBuilder, private formService: FormService) {
+  constructor(private fb: FormBuilder, private complaintsService: ComplaintsService, private formService: FormService) {
     this.complaintForm = this.fb.group({
       imgUrl: [''],
       title: ['', Validators.required],
@@ -47,17 +47,31 @@ export class ComplaintInsertComponent {
 
   onSubmit() {
     if (this.complaintForm.valid) {
-      const formData = new FormData();
-      formData.append('title', this.complaintForm.get('title')?.value);
-      formData.append('info', this.complaintForm.get('info')?.value);
-      if (this.selectedFile) {
-        formData.append('image', this.selectedFile, this.selectedFile.name);
-      }
+      const newComplaint: Complaints = {
+        id: this.generateId(),
+        imgUrl: this.selectedFile ? this.selectedFile.name : '', // Apenas o nome do arquivo
+        title: this.complaintForm.value.title,
+        time: "Há 1 minuto",
+        info: this.complaintForm.value.info,
+        hiddenText: this.complaintForm.value.hiddenText,
+        like: 0,
+        dislike: 0,
+        expanded: false
+      };
 
-      console.log('Denúncia enviada:', formData);
-      this.complaintForm.reset();
-      this.selectedFile = null;
-      this.closeForm();
+      this.complaintsService.addComplaint(newComplaint).subscribe(
+        (response) => {
+          console.log('Denúncia enviada com sucesso:', response);
+          this.complaintAdded.emit(response); // Emite evento de adição
+          this.complaintForm.reset();
+          this.selectedFile = null;
+          this.closeForm();
+        },
+        (error) => {
+          console.error('Erro ao enviar denúncia:', error);
+        }
+      );
+
     }
   }
 
@@ -66,6 +80,10 @@ export class ComplaintInsertComponent {
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0]; // Armazena o arquivo selecionado
     }
+  }
+
+  generateId(): number {
+    return Math.floor(1000 + Math.random() * 9000); // Gera um número aleatório de 4 dígitos
   }
 
   closeForm() {
