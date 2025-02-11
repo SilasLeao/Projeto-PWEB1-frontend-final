@@ -9,14 +9,24 @@
       <mat-icon>account_circle</mat-icon>
     </div>
 
-    <!-- Menu principal -->
     <mat-menu #mainMenu="matMenu">
       <button mat-menu-item (click)="navigateToFeed()">Notícias</button>
       <button mat-menu-item>Calendário de Eventos</button>
       <button mat-menu-item (click)="logout()">Sair</button>
     </mat-menu>
-
   </header>
+
+  <button mat-fab class="addButton" (click)="openForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+    <div class="overlay" *ngIf="formOpen">
+      <app-complaint-insert (complaintAdded)="complaintAdded($event)"></app-complaint-insert>
+    </div>
   <app-complaint-list [complaintsList]="complaintsList"></app-complaint-list>
+
+
+  <!-- Formulário de inserção -->
+
+
   <footer></footer>
 </div>

@@ -49,6 +49,15 @@ header {
   align-items: center;
 }
 
+.addButton {
+  background-color: #b10000;
+  border-radius: 50%;
+  color: honeydew;
+  position: fixed;
+  margin-left: 2rem;
+  margin-top: 50%;
+}
+
 footer {
   background-color: #1E1E1E;
   height: 6vh;

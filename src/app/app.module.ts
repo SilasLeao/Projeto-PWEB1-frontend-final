@@ -11,6 +11,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,11 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     AppRoutingModule,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    MatInputModule, // Adicionando o MatInputModule
+    MatFormFieldModule, // Adicionando o MatFormFieldModule
+    MatButtonModule, // Adicionando o MatButtonModule
+    MatIconModule, // Adicionando o MatIconModule
   ],
   providers: [],
   exports: [

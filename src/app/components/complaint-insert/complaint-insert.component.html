@@ -1,0 +1,37 @@
+<!--<button mat-fab color="primary" class="add-button" (click)="openForm()">-->
+<!--  <mat-icon>add</mat-icon>-->
+<!--</button>-->
+
+<div class="backgroundContainer" *ngIf="isFormVisible">
+  <div class="form-container">
+    <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Subtítulo</mat-label>
+        <textarea matInput formControlName="info" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Informações</mat-label>
+        <textarea matInput formControlName="hiddenText" required></textarea>
+      </mat-form-field>
+
+      <div class="file-input-container">
+        <label for="file-upload" class="custom-file-upload">
+          <mat-icon>upload</mat-icon> Escolher imagem
+        </label>
+        <input id="file-upload" type="file" (change)="onImageUpload($event)">
+        <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="complaintForm.invalid">Enviar</button>
+      <button mat-raised-button type="button" (click)="closeForm()">Cancelar</button>
+    </form>
+  </div>
+
+
+</div>

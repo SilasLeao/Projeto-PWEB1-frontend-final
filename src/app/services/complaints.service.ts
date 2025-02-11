@@ -15,6 +15,10 @@ export class ComplaintsService {
     return this.http.get<Complaints[]>(this.apiUrl);
   }
 
+  addComplaint(complaint: Complaints): Observable<Complaints> {
+    return this.http.post<Complaints>(this.apiUrl, complaint);
+  }
+
   // Método para atualizar os likes ou dislikes de uma notícia
   updateLikesDislikes(complaints: Complaints): Observable<Complaints> {
     return this.http.put<Complaints>(`${this.apiUrl}/${complaints.id}`, complaints); // Atualiza a notícia específica
