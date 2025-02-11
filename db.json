@@ -113,5 +113,18 @@
       "dislike": "16",
       "expanded": false
     }
+  ],
+  "complaints": [
+    {
+      "id": "5735",
+      "imgUrl": "https://s2-g1.glbimg.com/TpxCzXE20XZVW44LoYfWjffq4dI=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/P/n/f0hNZMTWy5lXkVo6EOWw/incendio-galpao-de-reciclaveis.jpg",
+      "title": "Incêndio atinge e destrói parte de galpão de materiais recicláveis em Santa Rita",
+      "time": "Há 5 horas",
+      "info": "Estabelecimento fica perto de área residencial, mas não há registro de feridos por conta do fogo.",
+      "hiddenText": "Um incêndio de grandes proporções atingiu e destruiu parte de um galpão de materiais recicláveis localizado em Santa Rita, na Região Metropolitana de João Pessoa, no fim da noite do sábado (8).\n\nSegundo o Corpo de Bombeiros, o fogo começou a se espalhar por volta das 23h. Vários produtos e parte da estrutura do espaço foram destruídos pelas chamas.\n\nO local fica próximo a uma área residencial, inclusive perto de um condomínio. Mas também de acordo com os bombeiros, não há registro de pessoas feridas por conta do incêndio.\n\nMesmo com o fogo controlado durante a madrugada, na manhã deste domingo (9) ainda existem focos do incêndio no local.\n\nPor isso, equipes de bombeiros continuam no galpão para evitar que as chamas se espalhem novamente.\n\nPor enquanto, ainda não é possível dizer o que causou o incêndio.",
+      "like": "94",
+      "dislike": "16",
+      "expanded": false
+    }
   ]
 }

@@ -1,0 +1,33 @@
+<div class="postFeed">
+  <div *ngFor="let complaints of complaintsList" class="postContainer">
+    <div class="post">
+      <img [src]="complaints.imgUrl" alt="Imagem da notícia" class="postImage">
+      <div class="postContent">
+        <h2>{{ complaints.title }}</h2>
+        <p class="info">{{ complaints.info }}</p>
+        <p class="time">{{ complaints.time }}</p>
+        <div class="postActions">
+          <button class="likeButton" mat-button (click)="likePost(complaints)">
+            <mat-icon class="like">thumb_up</mat-icon>
+            <span>{{ complaints.like }}</span>
+          </button>
+
+          <button class="dislikeButton" mat-button (click)="dislikePost(complaints)">
+            <mat-icon class="dislike">thumb_down</mat-icon>
+            <span>{{ complaints.dislike }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="complaints.expanded" class="expandedContent">
+      <div [innerHTML]="convertNewlinesToBreaks(complaints.hiddenText)"></div>
+    </div>
+
+    <!-- Botão de expandir/ocultar -->
+    <div class="postExpand" (click)="toggleExpand(complaints)">
+      <mat-icon class="chevron">{{ complaints.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+      <hr>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #B10000;
+  height: 6vh;
+  width: 100vw;
+  position: fixed;
+  color: honeydew;
+  font-family: sans-serif;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  cursor: pointer;
+  scale: 1.1;
+  color: #9e9c9c;
+}
+
+.menuButton {
+  margin-left: 2rem;
+}
+
+.menu {
+  color: honeydew;
+  transition: 0.3s;
+  font-size: 2rem;
+}
+
+.menu:hover {
+  color: #9e9c9c;
+  scale:1.1;
+}
+
+.userInfo {
+  display: flex;
+  margin-right: 2rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+footer {
+  background-color: #1E1E1E;
+  height: 6vh;
+  width: 100vw;
+
+}

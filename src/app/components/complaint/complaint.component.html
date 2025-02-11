@@ -11,12 +11,12 @@
 
     <!-- Menu principal -->
     <mat-menu #mainMenu="matMenu">
-      <button mat-menu-item (click)="navigateToComplaint()">Denúncias</button>
+      <button mat-menu-item (click)="navigateToFeed()">Notícias</button>
       <button mat-menu-item>Calendário de Eventos</button>
       <button mat-menu-item (click)="logout()">Sair</button>
     </mat-menu>
 
   </header>
-  <app-post-list [newsList]="newsList"></app-post-list>
+  <app-complaint-list [complaintsList]="complaintsList"></app-complaint-list>
   <footer></footer>
 </div>

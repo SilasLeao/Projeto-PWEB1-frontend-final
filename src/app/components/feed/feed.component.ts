@@ -38,6 +38,10 @@ export class FeedComponent implements OnInit {
     });
   }
 
+  navigateToComplaint() {
+    this.router.navigate(['/complaint']);
+  }
+
   logout() {
     localStorage.removeItem('username');
     this.router.navigate(['/login']);
