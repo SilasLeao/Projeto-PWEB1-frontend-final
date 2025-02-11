@@ -21,7 +21,7 @@
     </div>
 
     <div *ngIf="news.expanded" class="expandedContent">
-      <p>{{ news.hiddenText }}</p>
+      <div [innerHTML]="convertNewlinesToBreaks(news.hiddenText)"></div>
     </div>
 
     <!-- Botão de expandir/ocultar -->

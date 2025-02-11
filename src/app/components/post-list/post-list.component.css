@@ -19,7 +19,6 @@
 .postContainer {
   display: flex;
   flex-direction: column;
-  height: 50%;
   width: 80%;
   align-items: center;
   gap: 4rem;

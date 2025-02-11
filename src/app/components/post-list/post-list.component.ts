@@ -27,6 +27,10 @@ export class PostListComponent implements OnInit {
     news.expanded = !news.expanded;
   }
 
+  convertNewlinesToBreaks(text: string): string {
+    return text.replace(/\n/g, '<br>');
+  }
+
   likePost(news: News) {
     news.like++;
     this.newsService.updateLikesDislikes(news).subscribe({
