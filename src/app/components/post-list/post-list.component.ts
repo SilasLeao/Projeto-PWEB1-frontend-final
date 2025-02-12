@@ -23,7 +23,7 @@ export class PostListComponent {
   // Lista de notícias recebida como entrada do componente pai.
   @Input() newsList: News[] = [];
 
-  // Construtor do componente, injeta o serviço de notícias (métodos getNews e updateLikesDislikes) para interagir com o db.json .
+  // Construtor do componente, injeta o serviço de notícias (métodos getNews e updateLikesDislikes) para interagir com o db.json.
   constructor(private newsService: NewsService) {}
 
   // Alterna o estado de expansão da notícia para mostrar/ocultar o texto completo.
