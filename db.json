@@ -11,7 +11,7 @@
       "hiddenText": "Os boletos de pagamento do Imposto Predial e Territorial Urbano (IPTU) e a Taxa de Coleta de Resíduos (TCR) de João Pessoa começaram a ser entregues pelos Correios nas residências. Quem ainda não recebeu, ou quer pagar parcelado, também pode adquirir o documento através do Portal do Contribuinte. Os valores sofreram um reajuste de 4,87% no exercício de 2025, segundo a Prefeitura de João Pessoa.\n\nSegundo a administração municipal, o reajuste considera o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado entre novembro de 2023 e novembro de 2024.\n\nDe acordo com a Prefeitura de João Pessoa, os contribuintes poderão optar pelo pagamento em cota única com 15% de desconto até o dia 14 de março, pelo parcelamento em até 10 vezes ou pela cota única sem desconto, com vencimento no dia 7 de abril.\n\nAlém do desconto na cota única, será aplicado um abatimento adicional de 5% para os contribuintes que estavam em dia com a prefeitura até 31 de dezembro. Apenas no caso do pagamento em cota única, o desconto totaliza 20%.\n\nO desconto adicional de 5% é válido para todos os contribuintes em dia, independentemente da forma de pagamento escolhida. Para aqueles que optarem pelo parcelamento, o abatimento de 5% será calculado automaticamente no boleto.",
       "like": 42,
       "dislike": 16,
-      "expanded": true
+      "expanded": false
     },
     {
       "id": "4945",
@@ -154,6 +154,57 @@
       "date": "2025-02-25",
       "description": [
         "Festival de Comida"
+      ]
+    },
+    {
+      "id": "5332",
+      "date": "2025-03-02",
+      "description": [
+        "Festival de Cinema",
+        "Feira do Empreendedor do SEBRAE"
+      ]
+    },
+    {
+      "id": "7467",
+      "date": "2025-03-04",
+      "description": [
+        "Corrida do Sol"
+      ]
+    },
+    {
+      "id": "8878",
+      "date": "2025-03-08",
+      "description": [
+        "Fórum Brasil das Águas"
+      ]
+    },
+    {
+      "id": "1223",
+      "date": "2025-03-10",
+      "description": [
+        "Expo Turismo Paraíba"
+      ]
+    },
+    {
+      "id": "7475",
+      "date": "2025-03-19",
+      "description": [
+        "Soul Summer Festival"
+      ]
+    },
+    {
+      "id": "1753",
+      "date": "2025-03-20",
+      "description": [
+        "Consagra João Pessoa"
+      ]
+    },
+    {
+      "id": "1753",
+      "date": "2025-03-28",
+      "description": [
+        "Sabores da Paraíba",
+        "Folia de Rua"
       ]
     }
   ]
