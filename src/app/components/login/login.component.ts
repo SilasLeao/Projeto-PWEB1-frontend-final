@@ -27,7 +27,7 @@ export class LoginComponent {
   // Mensagem de erro exibida caso ocorra alguma falha no login.
   errorMessage: string = '';
 
-  // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP e o Router para permitir roteamento entre as páginas
+  // Construtor do componente, injeta o HttpClient para fazer requisições HTTP e o Router para permitir roteamento entre as páginas
   constructor(private http: HttpClient, private router: Router) {}
 
   logIn() {
