@@ -5,6 +5,8 @@ import {CommonModule} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import '@fortawesome/fontawesome-free/css/all.css';
 
+
+// Componente responsável pelo formulário de login do usuário.
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,15 +19,19 @@ import '@fortawesome/fontawesome-free/css/all.css';
   ],
   standalone: true
 })
+
 export class LoginComponent {
+  // Armazena o email e senha digitados pelo usuário.
   email: string = '';
   password: string = '';
+  // Mensagem de erro exibida caso ocorra alguma falha no login.
   errorMessage: string = '';
 
+  // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP e o Router para permitir roteamento entre as páginas
   constructor(private http: HttpClient, private router: Router) {}
 
   logIn() {
-    // Validação básica
+    // Validação básica de preenchimento dos campos
     if (!this.email || !this.password) {
       this.errorMessage = 'Por favor, preencha todos os campos.';
       return;
@@ -38,11 +44,11 @@ export class LoginComponent {
       return;
     }
 
-    // Verificar se o email existe no banco de dados
+    // Verificar se o email existe no banco de dados e se a senha está correta.
     this.http.get<any[]>(`http://localhost:3000/users?email=${this.email}`).subscribe({
       next: (users) => {
         if (users.length > 0 && users[0].password === this.password) {
-          localStorage.setItem('username', users[0].username); // Armazenando o nome do usuário
+          localStorage.setItem('username', users[0].username); // Armazena o nome do usuário no localStorage para ser exibido posteriormente
           this.router.navigate(['/feed']); // Redireciona para a página de feed
         } else {
           this.errorMessage = 'Email ou senha inválidos';
