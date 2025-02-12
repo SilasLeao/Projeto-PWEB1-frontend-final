@@ -18,12 +18,13 @@ header {
 
 .content {
   background-color: #1E1E1E;
-  height: 94vh;
+  height: 88vh;
   width: 100vw;
-  padding-top: 6vh;
+  padding-top: 12vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 
 .logo {
@@ -61,8 +62,8 @@ header {
 
 .calendar-container {
   text-align: center;
-  padding: 20px;
-  width: 90%;
+  padding: 5rem;
+  width: 80%;
 }
 
 .calendar-header {
@@ -70,12 +71,16 @@ header {
   align-items: center;
   gap: 15px;
   font-size: 20px;
+  color: #ffeeee;
 }
 
 .calendar-header button {
   padding: 5px 10px;
-  font-size: 18px;
+  color: #e62c2c;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .calendar {
@@ -85,6 +90,7 @@ header {
 }
 
 .calendar th, .calendar td {
+  color: #e62c2c;
   border: 1px solid #ddd;
   padding: 20px;
   text-align: center;
@@ -92,12 +98,13 @@ header {
 }
 
 .calendar td {
+
   height: 100px;
   background: #f9f9f9;
 }
 
 .calendar td.empty {
-  background: #eee;
+  background: #bcbcbc;
 }
 
 .calendar td strong {
@@ -113,8 +120,46 @@ header {
 }
 
 .calendar ul li {
-  background: #ffdd57;
+  background: #ffe787;
   padding: 5px;
   margin-top: 5px;
   border-radius: 4px;
 }
+
+.content::-webkit-scrollbar {
+  background-color: #1E1E1E;
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 10px;
+}
+
+
+::ng-deep .mat-mdc-menu-panel {
+  border: 1px solid white;
+  background-color:  #1E1E1E;
+
+}
+
+.mat-mdc-menu-content {
+  padding: 0;
+}
+
+.matMenuButton {
+  border-bottom: 1px solid white;
+  color: white;
+  padding: 0 1rem;
+  transition: 0.3s;
+}
+
+.matMenuButton:hover {
+  background-color: #505050;
+  color: #e3e3e3;
+}
+
+.matMenuButton:last-child {
+  border-bottom: none;
+}
+

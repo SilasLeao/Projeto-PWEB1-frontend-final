@@ -10,9 +10,9 @@
     </div>
 
     <mat-menu #mainMenu="matMenu">
-      <button mat-menu-item (click)="navigateToFeed()">Notícias</button>
-      <button mat-menu-item (click)="navigateToSchedule()">Calendário de Eventos</button>
-      <button mat-menu-item (click)="logout()">Sair</button>
+      <button class="matMenuButton" mat-menu-item (click)="navigateToFeed()">Notícias</button>
+      <button class="matMenuButton" mat-menu-item (click)="navigateToSchedule()">Calendário de Eventos</button>
+      <button class="matMenuButton" mat-menu-item (click)="logout()">Sair</button>
     </mat-menu>
   </header>
 
@@ -24,8 +24,6 @@
     </div>
   <app-complaint-list [complaintsList]="complaintsList"></app-complaint-list>
 
-
-  <!-- Formulário de inserção -->
 
 
   <footer></footer>

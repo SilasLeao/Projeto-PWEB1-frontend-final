@@ -11,18 +11,22 @@
 
     <!-- Menu principal -->
     <mat-menu #mainMenu="matMenu">
-      <button mat-menu-item (click)="navigateToFeed()">Notícias</button>
-      <button mat-menu-item (click)="navigateToComplaint()">Denúncias</button>
-      <button mat-menu-item (click)="logout()">Sair</button>
+      <button class="matMenuButton" mat-menu-item (click)="navigateToFeed()">Notícias</button>
+      <button class="matMenuButton" mat-menu-item (click)="navigateToComplaint()">Denúncias</button>
+      <button class="matMenuButton" mat-menu-item (click)="logout()">Sair</button>
     </mat-menu>
 
   </header>
   <div class="content">
     <div class="calendar-container">
       <div class="calendar-header">
-        <button (click)="prevMonth()">&#9664;</button>
+        <button mat-icon-button (click)="prevMonth()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
         <h2>{{ monthNames[currentMonth] }} {{ currentYear }}</h2>
-        <button (click)="nextMonth()">&#9654;</button>
+        <button mat-icon-button (click)="nextMonth()">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
       </div>
 
       <table class="calendar">
