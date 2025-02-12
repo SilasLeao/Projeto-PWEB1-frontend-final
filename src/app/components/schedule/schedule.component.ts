@@ -78,6 +78,7 @@ export class ScheduleComponent implements OnInit {
     let dayCounter = 1;
     this.calendar = [];
 
+    // Loop para mapeamento do calendário na hora de formatar as semanas/dias em linhas de forma correta
     for (let week = 0; week < 6; week++) {
       let row: number[] = [];
       for (let day = 0; day < 7; day++) {

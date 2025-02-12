@@ -1,5 +1,11 @@
 {
   "users": [
+    {
+      "id": "838d",
+      "username": "silas",
+      "email": "leaosilas@gmail.com",
+      "password": "123"
+    }
   ],
   "news": [
     {
@@ -102,9 +108,7 @@
       "expanded": false
     }
   ],
-  "complaints": [
-
-  ],
+  "complaints": [],
   "events": [
     {
       "id": "8765",
