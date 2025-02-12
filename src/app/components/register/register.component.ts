@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // Importe o FormsModule
-import {CommonModule, NgOptimizedImage} from '@angular/common'; // Importe o CommonModule
+import { FormsModule } from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink] // Adicione FormsModule nos imports
+  imports: [FormsModule, CommonModule, RouterLink]
 })
 export class RegisterComponent {
   username: string = '';
@@ -42,7 +42,7 @@ export class RegisterComponent {
           return;
         }
 
-        // Caso contrário, criar o novo usuário
+        // Caso contrário, cria o novo usuário
         const newUser = {
           username: this.username,
           email: this.email,

@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { Complaints } from '../../models/complaints.model';
 import { ComplaintsService } from '../../services/complaints.service';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
-import {MatButton, MatFabButton} from '@angular/material/button';
+import {MatButton} from '@angular/material/button';
 import {MatInput} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {NgIf} from '@angular/common';
@@ -35,8 +35,7 @@ export class ComplaintInsertComponent {
   constructor(private fb: FormBuilder,
               private complaintsService: ComplaintsService,
               private formService: FormService,
-              private imageUploadService: ImageUploadService,
-              private http: HttpClient
+              private imageUploadService: ImageUploadService
   ) {
     this.complaintForm = this.fb.group({
       imgUrl: [''],
@@ -74,7 +73,6 @@ export class ComplaintInsertComponent {
 
             this.complaintsService.addComplaint(newComplaint).subscribe(
               (response) => {
-                console.log('Denúncia enviada com sucesso:', response);
                 this.complaintAdded.emit(response); // Emite evento de adição
                 this.complaintForm.reset();
                 this.selectedFile = null;

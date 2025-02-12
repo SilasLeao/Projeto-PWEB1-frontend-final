@@ -2,12 +2,12 @@ import { Component, OnInit  } from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
-import {PostListComponent} from '../post-list/post-list.component';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
-import {NewsService} from '../../services/news.service';
 import {NgForOf, NgIf} from '@angular/common';
 
+
+// Componente responsável por exibir e gerenciar um calendário de eventos.
 @Component({
   selector: 'app-schedule',
   imports: [
@@ -24,7 +24,11 @@ import {NgForOf, NgIf} from '@angular/common';
   styleUrl: './schedule.component.css'
 })
 export class ScheduleComponent implements OnInit {
+
+  // Nome do usuário logado
   username: string = '';
+
+  // Variáveis para controle
   currentMonth: number = 0;
   currentYear: number = 0;
   monthNames: string[] = [
@@ -32,22 +36,30 @@ export class ScheduleComponent implements OnInit {
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
   weekDays: string[] = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+  // Estrutura do calendário
   calendar: number[][] = [];
+
+  // Eventos armazenados por data
   events: { [key: string]: string[] } = {};
 
+  // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP e o Router para permitir roteamento entre as páginas
   constructor(private router: Router, private http: HttpClient) {
     const today = new Date();
     this.currentMonth = today.getMonth();
     this.currentYear = today.getFullYear();
   }
 
+  // Metodo executado na inicialização do componente.
   ngOnInit() {
     // Recupera o nome do usuário armazenado no localStorage
     this.username = localStorage.getItem('username') || 'Visitante';
+    // Carrega os eventos do db.json
     this.loadEvents();
     this.generateCalendar();
   }
 
+  // Carrega os eventos do servidor e os organiza por data.
   loadEvents() {
     this.http.get<{ id: string, date: string, description: string[] }[]>('http://localhost:3000/events')
       .subscribe(data => {
@@ -58,6 +70,7 @@ export class ScheduleComponent implements OnInit {
       });
   }
 
+  // Gera a estrutura do calendário para o mês e ano atual.
   generateCalendar() {
     const firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
     const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
@@ -79,6 +92,7 @@ export class ScheduleComponent implements OnInit {
     }
   }
 
+  // Alterna para o mês anterior e gera o calendário novamente.
   prevMonth() {
     if (this.currentMonth === 0) {
       this.currentMonth = 11;
@@ -89,6 +103,7 @@ export class ScheduleComponent implements OnInit {
     this.generateCalendar();
   }
 
+  // Alterna para o mês seguinte e gera o calendário novamente.
   nextMonth() {
     if (this.currentMonth === 11) {
       this.currentMonth = 0;
@@ -99,19 +114,23 @@ export class ScheduleComponent implements OnInit {
     this.generateCalendar();
   }
 
+  // Retorna os eventos associados a um determinado dia.
   getEvents(day: number): string[] {
     const dateKey = `${this.currentYear}-${(this.currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     return this.events[dateKey] || [];
   }
 
+  // Navega para a página de denúncias.
   navigateToComplaint() {
     this.router.navigate(['/complaint']);
   }
 
+  // Navega para a página de notícias.
   navigateToFeed() {
     this.router.navigate(['/feed']);
   }
 
+  // Realiza o logout do usuário e redireciona para a tela de login.
   logout() {
     localStorage.removeItem('username');
     this.router.navigate(['/login']);

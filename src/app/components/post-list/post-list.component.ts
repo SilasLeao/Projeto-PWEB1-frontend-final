@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { News } from '../../models/news.model';
-import {MatIcon} from '@angular/material/icon';  // Ajuste o caminho conforme necessário
+import {MatIcon} from '@angular/material/icon';
 import { NewsService } from '../../services/news.service';
 import { CommonModule } from '@angular/common';
 import {MatButton} from '@angular/material/button';

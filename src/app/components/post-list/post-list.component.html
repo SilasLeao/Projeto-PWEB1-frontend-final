@@ -24,7 +24,6 @@
       <div [innerHTML]="convertNewlinesToBreaks(news.hiddenText)"></div>
     </div>
 
-    <!-- Botão de expandir/ocultar -->
     <div class="postExpand" (click)="toggleExpand(news)">
       <mat-icon class="chevron">{{ news.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
       <hr>

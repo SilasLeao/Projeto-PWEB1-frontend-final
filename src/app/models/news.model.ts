@@ -1,5 +1,6 @@
+// Modelo de notícia
 export interface News {
-  id: number;
+  id: string;
   imgUrl: string;
   title: string;
   time: string;

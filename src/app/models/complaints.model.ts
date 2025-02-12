@@ -1,3 +1,4 @@
+// Modelo de denúncia
 export interface Complaints {
   id: string;
   imgUrl: string;

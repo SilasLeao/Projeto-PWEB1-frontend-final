@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     cb(null, path.join('assets', 'imgs'));  // Caminho absoluto para a pasta onde as imagens serão salvas
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));  // Nome único baseado na data
+    cb(null, Date.now() + path.extname(file.originalname));
   }
 });
 
