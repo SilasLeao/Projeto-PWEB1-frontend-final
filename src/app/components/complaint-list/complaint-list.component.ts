@@ -116,6 +116,23 @@ export class ComplaintListComponent implements OnInit {
     });
   }
 
+  deleteComplaint(complaints: Complaints) {
+    // Confirmar se o usuário deseja realmente excluir a denúncia
+    if (confirm('Tem certeza de que deseja excluir esta denúncia?')) {
+      // Fazer a requisição DELETE para o JSON-Server
+      this.http.delete(`http://localhost:3000/complaints/${complaints.id}`).subscribe(
+        () => {
+          // Se a requisição for bem-sucedida, remover a denúncia da lista localmente
+          this.complaintsList = this.complaintsList.filter(c => c.id !== complaints.id);
+          console.log('Denúncia excluída com sucesso');
+        },
+        error => {
+          console.error('Erro ao excluir denúncia:', error);
+        }
+      );
+    }
+  }
+
   // Abre o formulário
   openForm(complaints: Complaints) {
     this.formService.openUpdateForm(complaints);
