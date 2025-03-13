@@ -16,6 +16,18 @@
         <textarea matInput formControlName="hiddenText" required></textarea>
       </mat-form-field>
 
+      <div class="status">
+        <mat-label class="statusLabel">Status:</mat-label>
+          <button type="button" class="pending" (click)="updateStatus('Pendente')" [class.active]="status === 'Pendente'">
+            <p>Pendente</p>
+            <mat-icon>access_time</mat-icon>
+          </button>
+          <button type="button" class="done" (click)="updateStatus('Resolvido')" [class.active]="status === 'Resolvido'">
+            <p>Resolvido</p>
+            <mat-icon>done</mat-icon>
+          </button>
+      </div>
+
       <div class="file-input-container">
         <label for="file-upload" class="custom-file-upload">
           <mat-icon>upload</mat-icon> Escolher imagem

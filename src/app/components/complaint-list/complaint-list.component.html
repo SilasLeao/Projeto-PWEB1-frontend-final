@@ -4,6 +4,15 @@
     <div class="post" *ngIf="complaints.imgUrl">
       <img [src]="'http://localhost:3200/assets/imgs/' + complaints.imgUrl" alt="Imagem da notícia" class="postImage">
       <div class="postContent">
+        <span *ngIf="complaints.status === 'Pendente'" class="status time">
+          <p>{{ complaints.status }}</p>
+          <mat-icon >access_time</mat-icon>
+        </span>
+
+        <span *ngIf="complaints.status === 'Resolvido'" class="status done">
+          <p>{{ complaints.status }}</p>
+          <mat-icon>done</mat-icon>
+        </span>
         <h2>{{ complaints.title }}</h2>
         <p class="info">{{ complaints.info }}</p>
         <p class="time">{{ complaints.time }} - {{complaints.userEmail}}</p>
@@ -37,6 +46,15 @@
     <!--Se a denúncia não tiver imagem, irá renderizar da seguinte maneira-->
     <div class="post" *ngIf="!complaints.imgUrl">
       <div class="postContentNoImg">
+        <span *ngIf="complaints.status === 'Pendente'" class="status time">
+          <p>{{ complaints.status }}</p>
+          <mat-icon >access_time</mat-icon>
+        </span>
+
+        <span *ngIf="complaints.status === 'Resolvido'" class="status done">
+          <p>{{ complaints.status }}</p>
+          <mat-icon>done</mat-icon>
+        </span>
         <h2>{{ complaints.title }}</h2>
         <p class="info">{{ complaints.info }}</p>
         <p class="time">{{ complaints.time }} - {{complaints.userEmail}}</p>

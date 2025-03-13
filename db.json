@@ -122,9 +122,10 @@
   "complaints": [
     {
       "id": "5331",
+      "status": "Pendente",
       "userEmail": "leaosilas@gmail.com",
       "imgUrl": "1741905541297.png",
-      "title": "xama criarrrr 123",
+      "title": "xama criarrrr 123gfdsgdsfg",
       "time": "Há 1 minuto",
       "info": "é o guri e não tem jeito meu pcr\nVAI TOMAR NO CU ANGULAR MIZERRASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "hiddenText": "TESTANDO1233123123123 TESTANDO1233123123123 TESTANDO1233123123123 TESTANDO1233123123123 TESTANDO1233123123123 TESTANDO1233123123123",
@@ -134,6 +135,7 @@
     },
     {
       "id": "9420",
+      "status": "Resolvido",
       "userEmail": "leaosilas@gmail.com",
       "imgUrl": "1741905553802.avif",
       "title": "TESTE TESTE TESTE TESTE",
@@ -146,6 +148,7 @@
     },
     {
       "id": "1893",
+      "status": "Pendente",
       "userEmail": "email@example.com",
       "imgUrl": "1741897926392.avif",
       "title": "dfhdfghdfh",
@@ -158,7 +161,8 @@
     },
     {
       "id": "8049",
-      "userEmail": "email@example.com",
+      "status": "Resolvido",
+      "userEmail": "leaosilas@gmail.com",
       "imgUrl": "",
       "title": "fsadfsdasdfadsfa",
       "time": "Há 1 minuto",
@@ -170,9 +174,10 @@
     },
     {
       "id": "4562",
-      "userEmail": "email@example.com",
+      "status": "Resolvido",
+      "userEmail": "leaosilas@gmail.com",
       "imgUrl": "",
-      "title": "fdasfdsafsad",
+      "title": "fdasfdsafsad 123123",
       "time": "Há 1 minuto",
       "info": "fdasfasdfasd",
       "hiddenText": "fdsafdasafsd",
@@ -182,6 +187,7 @@
     },
     {
       "id": "4254",
+      "status": "Pendente",
       "userEmail": "leaosilas@gmail.com",
       "imgUrl": "",
       "title": "hgdfdhfgfghd",
@@ -194,6 +200,7 @@
     },
     {
       "id": "9455",
+      "status": "Pendente",
       "userEmail": "leaosilas@gmail.com",
       "imgUrl": "1741899311455.avif",
       "title": "dfasafsdfasd",
@@ -206,6 +213,7 @@
     },
     {
       "id": "8780",
+      "status": "Pendente",
       "userEmail": "leaosilas@gmail.com",
       "imgUrl": "1741905594917.png",
       "title": "mamamamamamama",

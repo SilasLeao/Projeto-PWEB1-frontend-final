@@ -60,12 +60,22 @@
   gap: 1rem;
 }
 
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .info {
   color: #c8c8c8;
 }
 
 .time {
   color: #636363;
+}
+
+.done {
+  color: #00c100;
 }
 
 .postActions {

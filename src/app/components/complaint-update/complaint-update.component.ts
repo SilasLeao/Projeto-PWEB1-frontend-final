@@ -47,7 +47,9 @@ export class ComplaintUpdateComponent implements OnInit {
 
   username = localStorage.getItem('username') || 'Visitante';
 
-  complaintToUpdate: { imgUrl: string; userEmail: string; id: string; title: string; hiddenText: string; info: string ; time: string; like: number; dislike: number; expanded: boolean} = { id: '', userEmail: '', imgUrl: '', title: '', info: '', hiddenText: '', time: '', like: 0, dislike: 0, expanded: false };
+  complaintToUpdate: { imgUrl: string; userEmail: string; id: string; title: string; hiddenText: string; info: string ; time: string; like: number; dislike: number; expanded: boolean, status: string} = { id: '', userEmail: '', imgUrl: '', title: '', info: '', hiddenText: '', time: '', like: 0, dislike: 0, expanded: false, status: '' };
+
+  status: string = this.complaintToUpdate.status || '';
 
   // Construtor do componente, injetando FormBuilder para construir o formulário reativo,
   // serviço de denúncias (metodos getComplaints, addComplaints e updateLikesDislikes),
@@ -84,8 +86,13 @@ export class ComplaintUpdateComponent implements OnInit {
         info: this.complaintToUpdate.info || '',
         hiddenText: this.complaintToUpdate.hiddenText || ''
       });
-      this.imageUrl = this.complaintToUpdate.imgUrl || ''; // Atualiza a URL da imagem
+      this.imageUrl = this.complaintToUpdate.imgUrl || '';
+      this.status = this.complaintToUpdate.status || '';
     }
+  }
+
+  updateStatus(newStatus: string) {
+    this.status = newStatus;
   }
 
   // Metodo chamado ao submeter o formulário de denúncia.
@@ -110,7 +117,8 @@ export class ComplaintUpdateComponent implements OnInit {
                 time: this.complaintToUpdate.time,
                 like: this.complaintToUpdate.like,
                 dislike: this.complaintToUpdate.dislike,
-                expanded: this.complaintToUpdate.expanded
+                expanded: this.complaintToUpdate.expanded,
+                status: this.status
               };
 
               // Envia a denúncia atualizada para o JSON-Server
@@ -135,7 +143,8 @@ export class ComplaintUpdateComponent implements OnInit {
             title: this.updateComplaintForm.value.title,
             info: this.updateComplaintForm.value.info,
             hiddenText: this.updateComplaintForm.value.hiddenText,
-            id: this.complaintToUpdate.id
+            id: this.complaintToUpdate.id,
+            status: this.status
           };
 
           // Envia a denúncia para o JSON-Server.

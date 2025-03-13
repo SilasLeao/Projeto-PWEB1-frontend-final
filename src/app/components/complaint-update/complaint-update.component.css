@@ -10,8 +10,8 @@
 }
 
 .form-container {
-  background: #333333;
-  padding: 20px;
+  background: #272727;
+  padding: 25px;
   border-radius: 8px;
   width: 300px;
   border: 2px solid #cf2828;
@@ -20,6 +20,49 @@
 form mat-form-field {
   width: 100%;
 
+}
+
+.statusLabel {
+  color: honeydew;
+}
+
+.status {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.status button {
+  margin: 0;
+  width: unset;
+  padding: 8px 16px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.status button:hover {
+  scale: 1.05;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.status button.active {
+  opacity: 0.7;
+  scale: 1.05;
+  border: 2px solid red;
+}
+
+.pending{
+  background-color: #636363;
+  border: 1px solid honeydew;
+}
+
+.done {
+  background-color: #00c100;
+  border: 1px solid honeydew;
 }
 
 button {

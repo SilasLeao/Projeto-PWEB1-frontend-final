@@ -85,6 +85,7 @@ export class ComplaintInsertComponent {
               // Após o upload da imagem, cria a denúncia
               const newComplaint: Complaints = {
                 id: this.generateId(),
+                status: 'Em Andamento',
                 userEmail: userEmail,
                 imgUrl: response.imageUrl,
                 title: this.insertComplaintForm.value.title,
@@ -113,6 +114,7 @@ export class ComplaintInsertComponent {
           // Se não houver imagem, envia a denúncia sem imagem
           const newComplaint: Complaints = {
             id: this.generateId(),
+            status: 'Em Andamento',
             userEmail: userEmail, // Adicionando o e-mail aqui também
             imgUrl: '', // Sem imagem
             title: this.insertComplaintForm.value.title,
