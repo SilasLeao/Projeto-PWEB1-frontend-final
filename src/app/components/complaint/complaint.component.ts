@@ -99,7 +99,11 @@ export class ComplaintComponent implements OnInit {
   // Metodo chamado quando uma nova denúncia é adicionada com sucesso.
   complaintAdded(complaint: Complaints) {
     this.complaintsList.push(complaint); // Adiciona a denúncia à lista
-    this.closeInsertForm(); // Fecha o formulário
+  }
+
+  onComplaintUpdated(updatedComplaint: Complaints) {
+
+    this.loadComplaints();
   }
 
   // Navega para a tela de feed de denúncias.
