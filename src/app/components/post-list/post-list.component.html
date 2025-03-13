@@ -7,15 +7,23 @@
         <p class="info">{{ news.info }}</p>
         <p class="time">{{ news.time }}</p>
         <div class="postActions">
-          <button class="likeButton" mat-button (click)="likePost(news)">
-            <mat-icon class="like">thumb_up</mat-icon>
-            <span>{{ news.like }}</span>
+          <button
+            class="likeButton"
+            mat-button
+            (click)="likePost(news)">
+            <mat-icon class="like" [class.liked]="isPostLiked(news)">thumb_up</mat-icon>
+            <span [class.liked]="isPostLiked(news)">{{ news.like }}</span>
           </button>
 
-          <button class="dislikeButton" mat-button (click)="dislikePost(news)">
-            <mat-icon class="dislike">thumb_down</mat-icon>
-            <span>{{ news.dislike }}</span>
+          <button
+            class="dislikeButton"
+            mat-button
+            (click)="dislikePost(news)">
+            <mat-icon class="dislike" [class.disliked]="isPostDisliked(news)">thumb_down</mat-icon>
+            <span [class.disliked]="isPostDisliked(news)">{{ news.dislike }}</span>
           </button>
+
+
         </div>
       </div>
     </div>

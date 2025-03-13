@@ -50,7 +50,8 @@ export class RegisterComponent {
         const newUser = {
           username: this.username,
           email: this.email,
-          password: this.password
+          password: this.password,
+          likedPosts: []
         };
 
         // Enviando para o db.json
