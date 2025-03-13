@@ -117,8 +117,8 @@ export class ComplaintListComponent implements OnInit {
   }
 
   // Abre o formulário
-  openForm() {
-    this.formService.openUpdateForm();
+  openForm(complaints: Complaints) {
+    this.formService.openUpdateForm(complaints);
   }
 
   // Fecha o formulário

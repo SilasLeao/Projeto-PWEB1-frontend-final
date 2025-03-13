@@ -92,10 +92,6 @@ export class ComplaintComponent implements OnInit {
     this.formService.closeInsertForm();
   }
 
-  openUpdateForm() {
-    this.formService.openUpdateForm();
-  }
-
   closeUpdateForm() {
     this.formService.closeUpdateForm();
   }

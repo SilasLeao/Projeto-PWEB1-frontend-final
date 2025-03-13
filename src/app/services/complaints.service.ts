@@ -27,4 +27,8 @@ export class ComplaintsService {
     return this.http.put<Complaints>(`${this.apiUrl}/${complaints.id}`, complaints); // Atualiza a denúncia específica
   }
 
+  updateComplaint(complaint: Complaints) {
+    return this.http.put<Complaints>(`http://localhost:3000/complaints/${complaint.id}`, complaint);
+  }
+
 }

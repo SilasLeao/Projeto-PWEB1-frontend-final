@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {Complaints} from '../models/complaints.model';
 
 @Injectable({
   providedIn: 'root' // Disponibiliza o serviço em toda a aplicação.
@@ -7,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 
 // Serviço responsável por gerenciar a visibilidade de um formulário na aplicação.
 export class FormService {
+
+  complaintToUpdate: Complaints | undefined;
 
   // BehaviorSubjects que mantêm o estado da visibilidade de cada formulário.
   private insertFormVisible = new BehaviorSubject<boolean>(false);
@@ -27,11 +30,16 @@ export class FormService {
   }
 
   // Métodos para controlar a visibilidade do formulário de atualização.
-  openUpdateForm() {
+  openUpdateForm(complaints: Complaints) {
+    this.complaintToUpdate = complaints
     this.updateFormVisible.next(true);
   }
 
   closeUpdateForm() {
     this.updateFormVisible.next(false);
+  }
+
+  getComplaintToUpdate() {
+    return this.complaintToUpdate;
   }
 }
