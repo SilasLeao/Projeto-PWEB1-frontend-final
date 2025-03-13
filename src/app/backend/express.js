@@ -29,8 +29,6 @@ const upload = multer({ storage: storage });
 // Configuração para servir arquivos estáticos da pasta 'assets/imgs'
 app.use('/assets/imgs', express.static(path.join(__dirname, 'assets', 'imgs')));
 
-
-
 // Endpoint para o upload da imagem
 app.post('/upload', upload.single('image'), (req, res) => {
   // Verifica se a imagem foi carregada corretamente
