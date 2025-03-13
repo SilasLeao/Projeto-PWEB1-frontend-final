@@ -8,19 +8,30 @@ import { BehaviorSubject } from 'rxjs';
 // Serviço responsável por gerenciar a visibilidade de um formulário na aplicação.
 export class FormService {
 
-  // BehaviorSubject que mantém o estado da visibilidade do formulário.
-  private formVisible = new BehaviorSubject<boolean>(false);
+  // BehaviorSubjects que mantêm o estado da visibilidade de cada formulário.
+  private insertFormVisible = new BehaviorSubject<boolean>(false);
+  private updateFormVisible = new BehaviorSubject<boolean>(false);
 
-  // Observable que permite que outros componentes observem mudanças na visibilidade do formulário.
-  isFormVisible$ = this.formVisible.asObservable();
 
-  // Metodo para abrir o formulário, alterando o estado para visível.
-  openForm() {
-    this.formVisible.next(true);
+  // Observables que permitem que outros componentes observem mudanças na visibilidade dos formulários.
+  isInsertFormVisible$ = this.insertFormVisible.asObservable();
+  isUpdateFormVisible$ = this.updateFormVisible.asObservable();
+
+  // Métodos para controlar a visibilidade do formulário de inserção.
+  openInsertForm() {
+    this.insertFormVisible.next(true);
   }
 
-  // Metodo para fechar o formulário, alterando o estado para invisível.
-  closeForm() {
-    this.formVisible.next(false);
+  closeInsertForm() {
+    this.insertFormVisible.next(false);
+  }
+
+  // Métodos para controlar a visibilidade do formulário de atualização.
+  openUpdateForm() {
+    this.updateFormVisible.next(true);
+  }
+
+  closeUpdateForm() {
+    this.updateFormVisible.next(false);
   }
 }

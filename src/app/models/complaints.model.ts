@@ -1,6 +1,7 @@
 // Modelo de denúncia
 export interface Complaints {
   id: string;
+  userEmail: string,
   imgUrl: string;
   title: string;
   time: string;

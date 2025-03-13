@@ -6,16 +6,29 @@
       <div class="postContent">
         <h2>{{ complaints.title }}</h2>
         <p class="info">{{ complaints.info }}</p>
-        <p class="time">{{ complaints.time }}</p>
+        <p class="time">{{ complaints.time }} - {{complaints.userEmail}}</p>
+
         <div class="postActions">
-          <button class="likeButton" mat-button (click)="likePost(complaints)">
-            <mat-icon class="like">thumb_up</mat-icon>
-            <span>{{ complaints.like }}</span>
+          <button
+            class="likeButton"
+            mat-button
+            (click)="likePost(complaints)">
+            <mat-icon class="like" [class.liked]="isPostLiked(complaints)">thumb_up</mat-icon>
+            <span [class.liked]="isPostLiked(complaints)">{{ complaints.like }}</span>
           </button>
 
-          <button class="dislikeButton" mat-button (click)="dislikePost(complaints)">
-            <mat-icon class="dislike">thumb_down</mat-icon>
-            <span>{{ complaints.dislike }}</span>
+          <button
+            class="dislikeButton"
+            mat-button
+            (click)="dislikePost(complaints)">
+            <mat-icon class="dislike" [class.disliked]="isPostDisliked(complaints)">thumb_down</mat-icon>
+            <span [class.disliked]="isPostDisliked(complaints)">{{ complaints.dislike }}</span>
+          </button>
+          <button class="editButton" (click)="openForm()">
+            <mat-icon class="edit">edit</mat-icon>
+          </button>
+          <button class="deleteButton">
+            <mat-icon class="delete">delete</mat-icon>
           </button>
         </div>
       </div>
@@ -26,16 +39,28 @@
       <div class="postContentNoImg">
         <h2>{{ complaints.title }}</h2>
         <p class="info">{{ complaints.info }}</p>
-        <p class="time">{{ complaints.time }}</p>
+        <p class="time">{{ complaints.time }} - {{complaints.userEmail}}</p>
         <div class="postActions">
-          <button class="likeButton" mat-button (click)="likePost(complaints)">
-            <mat-icon class="like">thumb_up</mat-icon>
-            <span>{{ complaints.like }}</span>
+          <button
+            class="likeButton"
+            mat-button
+            (click)="likePost(complaints)">
+            <mat-icon class="like" [class.liked]="isPostLiked(complaints)">thumb_up</mat-icon>
+            <span [class.liked]="isPostLiked(complaints)">{{ complaints.like }}</span>
           </button>
 
-          <button class="dislikeButton" mat-button (click)="dislikePost(complaints)">
-            <mat-icon class="dislike">thumb_down</mat-icon>
-            <span>{{ complaints.dislike }}</span>
+          <button
+            class="dislikeButton"
+            mat-button
+            (click)="dislikePost(complaints)">
+            <mat-icon class="dislike" [class.disliked]="isPostDisliked(complaints)">thumb_down</mat-icon>
+            <span [class.disliked]="isPostDisliked(complaints)">{{ complaints.dislike }}</span>
+          </button>
+          <button class="editButton" (click)="openForm()">
+            <mat-icon class="edit">edit</mat-icon>
+          </button>
+          <button class="deleteButton">
+            <mat-icon class="delete">delete</mat-icon>
           </button>
         </div>
       </div>

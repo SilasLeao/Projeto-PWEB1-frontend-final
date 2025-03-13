@@ -68,6 +68,30 @@
   color: #636363;
 }
 
+.postActions {
+  display: flex;
+  align-items: center;
+}
+
+.editButton, .deleteButton {
+  background-color: transparent;
+}
+
+.edit, .delete {
+  color: #636363;
+  transition: 0.3s;
+  background-color: #1E1E1E;
+  padding: 6px 16px;
+  border-radius: 50px;
+}
+
+.edit:hover, .delete:hover {
+  cursor: pointer;
+  scale: 1.1;
+  color: #cf2828; /* Aplica a cor no ícone e no número */
+  background-color: rgba(255, 0, 0, 0.22);
+}
+
 .mat-mdc-button:not(:disabled) {
   color: honeydew;
 }
@@ -82,19 +106,23 @@
 }
 
 .likeButton:hover, .dislikeButton:hover {
-  color: #cf2828; /* Aplica a cor no ícone e no número */
+  color: #cf2828;
   background-color: rgba(255, 0, 0, 0.22);
 
 }
 
 .likeButton:hover mat-icon, .dislikeButton:hover mat-icon {
-  color: inherit; /* Garante que o ícone herde a cor aplicada ao botão */
+  color: inherit;
   scale: 1.1;
 }
 
 .likeButton:hover span, .dislikeButton:hover span {
   color: inherit; /* Garante que o número herde a cor aplicada ao botão */
   scale: 1.1;
+}
+
+.liked, .disliked {
+  color: #cf2828;
 }
 
 .postExpand {

@@ -26,4 +26,5 @@ export class ComplaintsService {
   updateLikesDislikes(complaints: Complaints): Observable<Complaints> {
     return this.http.put<Complaints>(`${this.apiUrl}/${complaints.id}`, complaints); // Atualiza a denúncia específica
   }
+
 }

@@ -9,6 +9,8 @@ import {ComplaintListComponent} from '../complaint-list/complaint-list.component
 import {MatFabButton, MatIconButton} from '@angular/material/button';
 import {NgIf} from '@angular/common';
 import { FormService } from '../../services/form.service';
+import {ComplaintUpdateComponent} from '../complaint-update/complaint-update.component';
+import { Subscription } from 'rxjs';
 
 // Componente responsável pelo feed de denúncias da aplicação.
 @Component({
@@ -23,7 +25,8 @@ import { FormService } from '../../services/form.service';
     MatMenuItem,
     MatFabButton,
     MatIconButton,
-    NgIf
+    NgIf,
+    ComplaintUpdateComponent
   ],
   templateUrl: './complaint.component.html',
   styleUrls: ['./complaint.component.css']
@@ -37,7 +40,11 @@ export class ComplaintComponent implements OnInit {
   complaintsList: Complaints[] = [];
 
   // Flag que controla se o formulário de denúncia está aberto ou fechado.
-  formOpen: boolean = false;
+  insertFormOpen: boolean = false;
+  updateFormOpen: boolean = false;
+
+  private insertFormSubscription!: Subscription;
+  private updateFormSubscription!: Subscription;
 
   // serviço de denúncias (metodos getComplaints, addComplaints e updateLikesDislikes),
   // router para roteamento das páginas da aplicação e
@@ -49,6 +56,25 @@ export class ComplaintComponent implements OnInit {
     // Carrega o nome do usuário do 'localStorage'.
     this.username = localStorage.getItem('username') || 'Visitante';
     this.loadComplaints();
+
+    // **Assinando os observables para atualizar automaticamente as variáveis**
+    this.insertFormSubscription = this.formService.isInsertFormVisible$.subscribe(
+      (isVisible) => this.insertFormOpen = isVisible
+    );
+
+    this.updateFormSubscription = this.formService.isUpdateFormVisible$.subscribe(
+      (isVisible) => this.updateFormOpen = isVisible
+    );
+  }
+
+  ngOnDestroy() {
+    // **Evita vazamento de memória ao desinscrever**
+    if (this.insertFormSubscription) {
+      this.insertFormSubscription.unsubscribe();
+    }
+    if (this.updateFormSubscription) {
+      this.updateFormSubscription.unsubscribe();
+    }
   }
 
   // Carrega a lista de denúncias do JSON-Server.
@@ -58,22 +84,26 @@ export class ComplaintComponent implements OnInit {
     });
   }
 
-  // Abre o formulário
-  openForm() {
-    this.formOpen = true;
-    this.formService.openForm();
+  openInsertForm() {
+    this.formService.openInsertForm();
   }
 
-  // Fecha o formulário
-  closeForm() {
-    this.formOpen = false;
-    this.formService.closeForm();
+  closeInsertForm() {
+    this.formService.closeInsertForm();
+  }
+
+  openUpdateForm() {
+    this.formService.openUpdateForm();
+  }
+
+  closeUpdateForm() {
+    this.formService.closeUpdateForm();
   }
 
   // Metodo chamado quando uma nova denúncia é adicionada com sucesso.
   complaintAdded(complaint: Complaints) {
     this.complaintsList.push(complaint); // Adiciona a denúncia à lista
-    this.closeForm(); // Fecha o formulário
+    this.closeInsertForm(); // Fecha o formulário
   }
 
   // Navega para a tela de feed de denúncias.

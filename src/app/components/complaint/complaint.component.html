@@ -16,12 +16,15 @@
     </mat-menu>
   </header>
 
-  <button mat-fab class="addButton" (click)="openForm()">
+  <button mat-fab class="addButton" (click)="openInsertForm()">
     <mat-icon>add</mat-icon>
   </button>
-    <div class="overlay" *ngIf="formOpen">
+    <div class="overlay" *ngIf="insertFormOpen">
       <app-complaint-insert (complaintAdded)="complaintAdded($event)"></app-complaint-insert>
     </div>
+  <div class="overlay" *ngIf="updateFormOpen">
+    <app-complaint-update (complaintAdded)="complaintAdded($event)"></app-complaint-update>
+  </div>
   <app-complaint-list [complaintsList]="complaintsList"></app-complaint-list>
 
 

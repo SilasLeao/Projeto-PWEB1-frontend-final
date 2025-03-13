@@ -10,10 +10,11 @@
 }
 
 .form-container {
-  background: #a84444;
+  background: #333333;
   padding: 20px;
   border-radius: 8px;
   width: 300px;
+  border: 2px solid #cf2828;
 }
 
 form mat-form-field {

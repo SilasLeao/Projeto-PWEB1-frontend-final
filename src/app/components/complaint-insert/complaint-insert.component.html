@@ -1,6 +1,6 @@
 <div class="backgroundContainer" *ngIf="isFormVisible">
   <div class="form-container">
-    <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="insertComplaintForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Título</mat-label>
         <input matInput formControlName="title" required>
@@ -24,7 +24,7 @@
         <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
       </div>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="complaintForm.invalid">Enviar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="insertComplaintForm.invalid">Enviar</button>
       <button mat-raised-button type="button" (click)="closeForm()">Cancelar</button>
     </form>
   </div>

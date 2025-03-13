@@ -9,7 +9,7 @@ import {MatIcon} from '@angular/material/icon';
 import {NgIf} from '@angular/common';
 import { FormService } from '../../services/form.service';
 import { ImageUploadService } from '../../services/image-upload.service';
-
+import { UsersService } from '../../services/users.service';
 
 // Componente para inserção de novas denúncias.
 @Component({
@@ -30,7 +30,7 @@ import { ImageUploadService } from '../../services/image-upload.service';
 export class ComplaintInsertComponent {
 
   // Formulário reativo(Angular Material) que coleta as informações da denúncia.
-  complaintForm: FormGroup;
+  insertComplaintForm: FormGroup;
 
   // Evento emitido quando uma nova denúncia é adicionada.
   @Output() complaintAdded = new EventEmitter<Complaints>();
@@ -51,9 +51,10 @@ export class ComplaintInsertComponent {
   constructor(private fb: FormBuilder,
               private complaintsService: ComplaintsService,
               private formService: FormService,
-              private imageUploadService: ImageUploadService
+              private imageUploadService: ImageUploadService,
+              private usersService: UsersService
   ) {
-    this.complaintForm = this.fb.group({
+    this.insertComplaintForm = this.fb.group({
       imgUrl: [''],
       title: ['', Validators.required],
       info: ['', Validators.required],
@@ -64,78 +65,83 @@ export class ComplaintInsertComponent {
     });
 
     // Subscribe para controlar a visibilidade do formulário.
-    this.formService.isFormVisible$.subscribe(visible => {
+    this.formService.isInsertFormVisible$.subscribe(visible => {
       this.isFormVisible = visible;
     });
   }
 
+  username = localStorage.getItem('username') || 'Visitante';
+
   // Metodo chamado ao submeter o formulário de denúncia.
   onSubmit() {
-    if (this.complaintForm.valid) {
-      // Se houver um arquivo, envia a imagem primeiro
-      if (this.selectedFile) {
-        this.uploadImage(this.selectedFile).subscribe(
-          (response) => {
-            // Após o upload da imagem, cria a denúncia
-            const newComplaint: Complaints = {
-              id: this.generateId(),
-              imgUrl: response.imageUrl,
-              title: this.complaintForm.value.title,
-              time: "Há 1 minuto",
-              info: this.complaintForm.value.info,
-              hiddenText: this.complaintForm.value.hiddenText,
-              like: 0,
-              dislike: 0,
-              expanded: false
-            };
+    if (this.insertComplaintForm.valid) {
+      this.usersService.getUserByUsername(this.username).subscribe(user => {
+        const userEmail = user.email || 'email@example.com';
 
-            // Envia a denúncia para o JSON-Server.
-            this.complaintsService.addComplaint(newComplaint).subscribe(
-              (response) => {
-                this.complaintAdded.emit(response); // Emite evento de adição
-                this.complaintForm.reset();
-                this.selectedFile = null;
-                this.closeForm();
-              },
-              (error) => {
-                console.error('Erro ao enviar denúncia:', error);
-              }
-            );
-          },
-          (error) => {
-            console.error('Erro ao fazer upload da imagem:', error);
-          }
-        );
-      } else {
-        // Se não houver imagem, envia a denúncia sem imagem
-        const newComplaint: Complaints = {
-          id: this.generateId(),
-          imgUrl: '', // Sem imagem
-          title: this.complaintForm.value.title,
-          time: "Há 1 minuto",
-          info: this.complaintForm.value.info,
-          hiddenText: this.complaintForm.value.hiddenText,
-          like: 0,
-          dislike: 0,
-          expanded: false
-        };
+        // Se houver um arquivo, envia a imagem primeiro
+        if (this.selectedFile) {
+          this.uploadImage(this.selectedFile).subscribe(
+            (response) => {
+              // Após o upload da imagem, cria a denúncia
+              const newComplaint: Complaints = {
+                id: this.generateId(),
+                userEmail: userEmail,
+                imgUrl: response.imageUrl,
+                title: this.insertComplaintForm.value.title,
+                time: "Há 1 minuto",
+                info: this.insertComplaintForm.value.info,
+                hiddenText: this.insertComplaintForm.value.hiddenText,
+                like: 0,
+                dislike: 0,
+                expanded: false
+              };
 
-        // Envia a denúncia para o JSON-Server.
-        this.complaintsService.addComplaint(newComplaint).subscribe(
-          (response) => {
-            console.log('Denúncia enviada com sucesso:', response);
-            this.complaintAdded.emit(response);
-            this.complaintForm.reset();
-            this.selectedFile = null;
-            this.closeForm();
-          },
-          (error) => {
-            console.error('Erro ao enviar denúncia:', error);
-          }
-        );
-      }
+              // Envia a denúncia para o JSON-Server.
+              this.complaintsService.addComplaint(newComplaint).subscribe(
+                (response) => {
+                  this.complaintAdded.emit(response); // Emite evento de adição
+                  this.insertComplaintForm.reset();
+                  this.selectedFile = null;
+                  this.closeForm();
+                },
+                (error) => console.error('Erro ao enviar denúncia:', error)
+              );
+            },
+            (error) => console.error('Erro ao fazer upload da imagem:', error)
+          );
+        } else {
+          // Se não houver imagem, envia a denúncia sem imagem
+          const newComplaint: Complaints = {
+            id: this.generateId(),
+            userEmail: userEmail, // Adicionando o e-mail aqui também
+            imgUrl: '', // Sem imagem
+            title: this.insertComplaintForm.value.title,
+            time: "Há 1 minuto",
+            info: this.insertComplaintForm.value.info,
+            hiddenText: this.insertComplaintForm.value.hiddenText,
+            like: 0,
+            dislike: 0,
+            expanded: false
+          };
+
+          // Envia a denúncia para o JSON-Server.
+          this.complaintsService.addComplaint(newComplaint).subscribe(
+            (response) => {
+              console.log('Denúncia enviada com sucesso:', response);
+              this.complaintAdded.emit(response);
+              this.insertComplaintForm.reset();
+              this.selectedFile = null;
+              this.closeForm();
+            },
+            (error) => {
+              console.error('Erro ao enviar denúncia:', error);
+            }
+          );
+        }
+      });
     }
   }
+
 
   // Realiza o upload da imagem selecionada.
   uploadImage(file: File) {
@@ -163,6 +169,6 @@ export class ComplaintInsertComponent {
 
   // Fecha o formulário de denúncia.
   closeForm() {
-    this.formService.closeForm();
+    this.formService.closeInsertForm();
   }
 }
