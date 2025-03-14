@@ -16,4 +16,8 @@ export class UsersService {
       map(users => users.length > 0 ? users[0] : null)
     );
   }
+
+  getUserById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
 }

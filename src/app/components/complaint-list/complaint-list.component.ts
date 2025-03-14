@@ -7,6 +7,7 @@ import {Complaints} from '../../models/complaints.model';
 import {HttpClient} from '@angular/common/http';
 import {FormService} from '../../services/form.service';
 import { ComplaintComponent } from '../complaint/complaint.component';
+import {UsersService} from '../../services/users.service';
 
 // Componente responsável pela listagem de denúncias feitas pelos usuários.
 @Component({
@@ -30,7 +31,7 @@ export class ComplaintListComponent implements OnInit {
   userId: string = '';
 
   // Construtor do componente, injeta o serviço de denúncias (metodos getComplaints, addComplaints e updateLikesDislikes) para interagir com o db.json.
-  constructor(private complaintsService: ComplaintsService, private http: HttpClient, private formService: FormService) {}
+  constructor(private complaintsService: ComplaintsService, private http: HttpClient, private formService: FormService, private usersService: UsersService) {}
 
   ngOnInit() {
     this.loadUserLikes();
@@ -117,25 +118,37 @@ export class ComplaintListComponent implements OnInit {
   }
 
   deleteComplaint(complaints: Complaints) {
-    // Confirmar se o usuário deseja realmente excluir a denúncia
-    if (confirm('Tem certeza de que deseja excluir esta denúncia?')) {
-      // Fazer a requisição DELETE para o JSON-Server
-      this.http.delete(`http://localhost:3000/complaints/${complaints.id}`).subscribe(
-        () => {
-          // Se a requisição for bem-sucedida, remover a denúncia da lista localmente
-          this.complaintsList = this.complaintsList.filter(c => c.id !== complaints.id);
-          console.log('Denúncia excluída com sucesso');
-        },
-        error => {
-          console.error('Erro ao excluir denúncia:', error);
-        }
-      );
-    }
+    this.usersService.getUserById(this.userId).subscribe(user => {
+      if (!user || user.email !== complaints.userEmail) {
+        alert('Você não tem permissão para excluir esta denúncia.');
+        return;
+      }
+
+      // Confirmar se o usuário deseja realmente excluir a denúncia
+      if (confirm('Tem certeza de que deseja excluir esta denúncia?')) {
+        // Fazer a requisição DELETE para o JSON-Server
+        this.http.delete(`http://localhost:3000/complaints/${complaints.id}`).subscribe(
+          () => {
+            // Se a requisição for bem-sucedida, remover a denúncia da lista localmente
+            this.complaintsList = this.complaintsList.filter(c => c.id !== complaints.id);
+            console.log('Denúncia excluída com sucesso');
+          },
+          error => console.error('Erro ao excluir denúncia:', error)
+        );
+      }
+    }, error => console.error('Erro ao buscar usuário:', error));
   }
 
   // Abre o formulário
   openForm(complaints: Complaints) {
-    this.formService.openUpdateForm(complaints);
+    this.usersService.getUserById(this.userId).subscribe(user => {
+      if (!user || user.email !== complaints.userEmail) {
+        alert('Você não tem permissão para editar esta denúncia.');
+        return;
+      }
+
+      this.formService.openUpdateForm(complaints);
+    }, error => console.error('Erro ao buscar usuário:', error));
   }
 
   // Fecha o formulário
