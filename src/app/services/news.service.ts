@@ -9,7 +9,7 @@ import { News } from '../models/news.model';
   providedIn: 'root' // Disponibiliza o serviço em toda a aplicação.
 })
 export class NewsService {
-  private apiUrl = 'http://localhost:3000/news'; // URL do db.json
+  private apiUrl = 'http://localhost:8080/posts'; // URL do db.json
 
   // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP.
   constructor(private http: HttpClient) {}

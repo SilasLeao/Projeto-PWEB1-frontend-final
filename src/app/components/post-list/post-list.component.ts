@@ -37,11 +37,15 @@ export class PostListComponent implements OnInit {
     const username = localStorage.getItem('username');
     if (!username) return;
 
-    this.http.get<any[]>(`http://localhost:3000/users?username=${username}`).subscribe(users => {
+    this.http.get<any[]>(`http://localhost:8080/users?username=${username}`).subscribe(users => {
       if (users.length > 0) {
         this.userId = users[0].id;
-        this.likedPosts = new Set(users[0].likedPosts || []);
-        this.dislikedPosts = new Set(users[0].dislikedPosts || []);
+        // Filtra e extrai apenas os IDs dos likedPosts e dislikedPosts
+        this.likedPosts = new Set(users[0].likedPosts.map((post: { id: string; }) => post.id));
+        this.dislikedPosts = new Set(users[0].dislikedPosts.map((post: { id: string; }) => post.id));
+
+        console.log(this.likedPosts)
+        console.log(this.dislikedPosts)
       }
     }, error => console.error('Erro ao buscar usuário:', error));
   }
@@ -60,14 +64,14 @@ export class PostListComponent implements OnInit {
   likePost(news: News) {
     if (this.isPostLiked(news)) {
       this.likedPosts.delete(news.id);
-      news.like--; // Remove like
+      news.likes--; // Remove like
       this.updateUserLikesDislikes();
     } else {
       this.likedPosts.add(news.id);
-      news.like++; // Adiciona like
+      news.likes++; // Adiciona like
       if(this.isPostDisliked(news)) {
         this.dislikedPosts.delete(news.id); // Remove dislike se existir
-        news.dislike = Math.max(0, news.dislike - 1);
+        news.dislikes = Math.max(0, news.dislikes - 1);
       }
       this.updateUserLikesDislikes();
     }
@@ -78,14 +82,14 @@ export class PostListComponent implements OnInit {
   dislikePost(news: News) {
     if (this.isPostDisliked(news)) {
       this.dislikedPosts.delete(news.id);
-      news.dislike--; // Remove dislike
+      news.dislikes--; // Remove dislike
       this.updateUserLikesDislikes();
     } else {
       this.dislikedPosts.add(news.id);
-      news.dislike++; // Adiciona dislike
+      news.dislikes++; // Adiciona dislike
       if(this.isPostLiked(news)) {
         this.likedPosts.delete(news.id); // Remove like se existir
-        news.like = Math.max(0, news.like - 1);
+        news.likes = Math.max(0, news.likes - 1);
       }
       this.updateUserLikesDislikes();
     }
@@ -103,13 +107,18 @@ export class PostListComponent implements OnInit {
   updateUserLikesDislikes() {
     if (!this.userId) return;
 
+
     const updateData = {
       likedPosts: Array.from(this.likedPosts),
       dislikedPosts: Array.from(this.dislikedPosts)
     };
 
-    this.http.patch(`http://localhost:3000/users/${this.userId}`, updateData).subscribe({
+    console.log("Enviando PATCH para:", `http://localhost:8080/users/${this.userId}`);
+    console.log("Dados enviados1:", this.likedPosts);
+    console.log("Dados enviados2:", this.dislikedPosts);
+    this.http.patch(`http://localhost:8080/users/${this.userId}`, updateData).subscribe({
       error: err => console.error('Erro ao atualizar usuário:', err)
     });
   }
+
 }

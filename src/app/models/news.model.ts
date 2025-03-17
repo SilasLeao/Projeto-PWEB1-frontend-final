@@ -5,8 +5,8 @@ export interface News {
   title: string;
   time: string;
   info: string;
-  like: number;
-  dislike: number;
+  likes: number;
+  dislikes: number;
   hiddenText: string;
   expanded: boolean;
 }

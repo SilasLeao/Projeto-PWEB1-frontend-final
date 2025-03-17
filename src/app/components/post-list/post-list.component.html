@@ -12,7 +12,7 @@
             mat-button
             (click)="likePost(news)">
             <mat-icon class="like" [class.liked]="isPostLiked(news)">thumb_up</mat-icon>
-            <span [class.liked]="isPostLiked(news)">{{ news.like }}</span>
+            <span [class.liked]="isPostLiked(news)">{{ news.likes }}</span>
           </button>
 
           <button
@@ -20,7 +20,7 @@
             mat-button
             (click)="dislikePost(news)">
             <mat-icon class="dislike" [class.disliked]="isPostDisliked(news)">thumb_down</mat-icon>
-            <span [class.disliked]="isPostDisliked(news)">{{ news.dislike }}</span>
+            <span [class.disliked]="isPostDisliked(news)">{{ news.dislikes }}</span>
           </button>
 
 
