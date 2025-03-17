@@ -44,18 +44,14 @@ export class LoginComponent {
       return;
     }
 
-    // Verificar se o email existe no banco de dados e se a senha está correta.
-    this.http.get<any[]>(`http://localhost:3000/users?email=${this.email}`).subscribe({
-      next: (users) => {
-        if (users.length > 0 && users[0].password === this.password) {
-          localStorage.setItem('username', users[0].username); // Armazena o nome do usuário no localStorage para ser exibido posteriormente
-          this.router.navigate(['/feed']); // Redireciona para a página de feed
-        } else {
-          this.errorMessage = 'Email ou senha inválidos';
-        }
+    // Enviando requisição para o backend
+    this.http.post<any>('http://localhost:8080/login', { email: this.email, password: this.password }).subscribe({
+      next: (response) => {
+        localStorage.setItem('username', response.username);
+        this.router.navigate(['/feed']);
       },
       error: (err) => {
-        this.errorMessage = 'Erro ao verificar usuário. Tente novamente.';
+        this.errorMessage = 'Email ou senha inválidos';
         console.error(err);
       }
     });

@@ -6,7 +6,7 @@ import {map, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'http://localhost:3000/users'; // Ajuste a URL conforme necessário
+  private apiUrl = 'http://localhost:8080/users'; // Ajuste a URL conforme necessário
 
   constructor(private http: HttpClient) {}
 
@@ -19,5 +19,10 @@ export class UsersService {
 
   getUserById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  // Lista todos os usuários
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 }
