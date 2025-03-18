@@ -26,9 +26,8 @@ export class ComplaintListComponent implements OnInit {
   @Input() complaintsList: Complaints[] = [];
 
 
-  likedComplaints = new Set<string>(); // Armazena os IDs dos posts curtidos
-  dislikedComplaints = new Set<string>();
-  userId: string = '';
+
+
 
   // Construtor do componente, injeta o serviço de denúncias (metodos getComplaints, addComplaints e updateLikesDislikes) para interagir com o db.json.
   constructor(private complaintsService: ComplaintsService, private http: HttpClient, private formService: FormService, private usersService: UsersService) {}
@@ -38,17 +37,7 @@ export class ComplaintListComponent implements OnInit {
   }
 
   loadUserLikes() {
-    const username = localStorage.getItem('username');
-    if (!username) return;
-
-    this.http.get<any[]>(`http://localhost:8080/users?username=${username}`).subscribe(users => {
-      if (users.length > 0) {
-        this.userId = users[0].id;
-        // Filtra e extrai apenas os IDs dos likedPosts e dislikedPosts
-        this.likedComplaints = new Set(users[0].likedComplaints.map((post: { id: string; }) => post.id));
-        this.dislikedComplaints = new Set(users[0].dislikedComplaints.map((post: { id: string; }) => post.id));
-      }
-    }, error => console.error('Erro ao buscar usuário:', error));
+    this.complaintsService.loadUserLikes();
   }
 
   // Alterna o estado de expansão da denúncia para mostrar/ocultar o texto completo.
@@ -63,95 +52,29 @@ export class ComplaintListComponent implements OnInit {
 
   // Incrementa o número de "likes" de uma postagem e atualiza no JSON-Server.
   likePost(complaints: Complaints) {
-    if (this.isPostLiked(complaints)) {
-      this.likedComplaints.delete(complaints.id);
-      complaints.likes--; // Remove like
-
-    } else {
-      this.likedComplaints.add(complaints.id);
-      complaints.likes++; // Adiciona like
-      if(this.isPostDisliked(complaints)) {
-        this.dislikedComplaints.delete(complaints.id); // Remove dislike se existir
-        complaints.dislikes = Math.max(0, complaints.dislikes - 1);
-      }
-    }
-      this.updateUserLikesDislikes();
-    this.complaintsService.updateLikesDislikes(complaints).subscribe();
+    this.complaintsService.likePost(complaints);
   }
 
   // Incrementa o número de "dislikes" de uma postagem e atualiza no JSON-Server.
   dislikePost(complaints: Complaints) {
-    if (this.isPostDisliked(complaints)) {
-      this.dislikedComplaints.delete(complaints.id);
-      complaints.dislikes--; // Remove dislike
-    } else {
-      this.dislikedComplaints.add(complaints.id);
-      complaints.dislikes++; // Adiciona dislike
-      if(this.isPostLiked(complaints)) {
-        this.likedComplaints.delete(complaints.id); // Remove like se existir
-        complaints.likes = Math.max(0, complaints.likes - 1);
-      }
-    }
-      this.updateUserLikesDislikes();
-    this.complaintsService.updateLikesDislikes(complaints).subscribe();
+    this.complaintsService.dislikePost(complaints);
+  }
+
+  deleteComplaint(complaints: Complaints, complaintsList: Complaints[]) {
+    this.complaintsService.deleteComplaint(complaints, complaintsList)
   }
 
   isPostLiked(complaints: Complaints): boolean {
-    return this.likedComplaints.has(complaints.id);
+    return this.complaintsService.isPostLiked(complaints)
   }
 
   isPostDisliked(complaints: Complaints): boolean {
-    return this.dislikedComplaints.has(complaints.id);
-  }
-
-  updateUserLikesDislikes() {
-    if (!this.userId) return;
-
-
-    const updateData = {
-      likedComplaints: Array.from(this.likedComplaints),
-      dislikedComplaints: Array.from(this.dislikedComplaints),
-    };
-
-    this.http.patch(`http://localhost:8080/users/${this.userId}/complaints`, updateData).subscribe({
-      error: err => console.error('Erro ao atualizar usuário:', err)
-    });
-  }
-
-  deleteComplaint(complaints: Complaints) {
-    this.usersService.getUserById(this.userId).subscribe(user => {
-      if (!user || user.email !== complaints.userEmail) {
-        alert('Você não tem permissão para excluir esta denúncia.');
-        return;
-      }
-
-      // Confirmar se o usuário deseja realmente excluir a denúncia
-      if (confirm('Tem certeza de que deseja excluir esta denúncia?')) {
-        // Fazer a requisição DELETE para o JSON-Server
-        this.http.delete(`http://localhost:8080/complaints/${complaints.id}`).subscribe(
-          () => {
-            // Se a requisição for bem-sucedida, remover a denúncia da lista localmente
-            this.complaintsList = this.complaintsList.filter(c => c.id !== complaints.id);
-            console.log('Denúncia excluída com sucesso');
-          },
-          error => console.error('Erro ao excluir denúncia:', error)
-        );
-
-
-      }
-    }, error => console.error('Erro ao buscar usuário:', error));
+    return this.complaintsService.isPostDisliked(complaints)
   }
 
   // Abre o formulário
   openForm(complaints: Complaints) {
-    this.usersService.getUserById(this.userId).subscribe(user => {
-      if (!user || user.email !== complaints.userEmail) {
-        alert('Você não tem permissão para editar esta denúncia.');
-        return;
-      }
-
-      this.formService.openUpdateForm(complaints);
-    }, error => console.error('Erro ao buscar usuário:', error));
+    this.complaintsService.openForm(complaints)
   }
 
   // Fecha o formulário
