@@ -14,6 +14,7 @@ header {
   color: honeydew;
   font-family: sans-serif;
   align-items: center;
+  z-index: 5;
 }
 
 .content {

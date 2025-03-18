@@ -59,15 +59,46 @@ export class ScheduleComponent implements OnInit {
     this.generateCalendar();
   }
 
-  // Carrega os eventos do servidor e os organiza por data.
+
   loadEvents() {
-    this.http.get<{ id: string, date: string, description: string[] }[]>('http://localhost:3000/events')
-      .subscribe(data => {
-        this.events = data.reduce((acc, event) => {
-          acc[event.date] = event.description;
-          return acc;
-        }, {} as { [key: string]: string[] });
-      });
+    this.http.get<any[]>('http://localhost:8080/events')
+      .subscribe(
+        response => {
+          this.events = this.parseEvents(response);
+        },
+        error => {
+          console.error("Erro ao carregar eventos:", error);
+          this.events = {};
+        }
+      );
+  }
+
+
+  parseEvents(response: any[]): { [key: string]: string[] } {
+    const eventsByDate: { [key: string]: string[] } = {};
+
+    response.forEach(event => {
+      try {
+        // Corrigir a string JSON (substituir `{}` por `[]`)
+        const formattedDescription = event.description.replace(/^{/, '[').replace(/}$/, ']');
+
+        // Converter para array de strings
+        const descriptions: string[] = JSON.parse(formattedDescription);
+
+        // Se a data ainda não existe no objeto, cria uma chave para ela
+        if (!eventsByDate[event.date]) {
+          eventsByDate[event.date] = [];
+        }
+
+        // Adiciona os eventos na data correspondente
+        eventsByDate[event.date].push(...descriptions);
+
+      } catch (error) {
+        console.error(`Erro ao processar evento com ID ${event.id}:`, error);
+      }
+    });
+
+    return eventsByDate;
   }
 
   // Gera a estrutura do calendário para o mês e ano atual.
