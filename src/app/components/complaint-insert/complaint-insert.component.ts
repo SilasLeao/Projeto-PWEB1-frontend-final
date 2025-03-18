@@ -59,8 +59,8 @@ export class ComplaintInsertComponent {
       title: ['', Validators.required],
       info: ['', Validators.required],
       hiddenText: ['', Validators.required],
-      like: 0,
-      dislike: 0,
+      likes: 0,
+      dislikes: 0,
       expanded: "false"
     });
 
@@ -85,15 +85,15 @@ export class ComplaintInsertComponent {
               // Após o upload da imagem, cria a denúncia
               const newComplaint: Complaints = {
                 id: this.generateId(),
-                status: 'Em Andamento',
+                status: 'Pendente',
                 userEmail: userEmail,
                 imgUrl: response.imageUrl,
                 title: this.insertComplaintForm.value.title,
                 time: "Há 1 minuto",
                 info: this.insertComplaintForm.value.info,
                 hiddenText: this.insertComplaintForm.value.hiddenText,
-                like: 0,
-                dislike: 0,
+                likes: 0,
+                dislikes: 0,
                 expanded: false
               };
 
@@ -114,15 +114,15 @@ export class ComplaintInsertComponent {
           // Se não houver imagem, envia a denúncia sem imagem
           const newComplaint: Complaints = {
             id: this.generateId(),
-            status: 'Em Andamento',
+            status: 'Pendente',
             userEmail: userEmail, // Adicionando o e-mail aqui também
             imgUrl: '', // Sem imagem
             title: this.insertComplaintForm.value.title,
             time: "Há 1 minuto",
             info: this.insertComplaintForm.value.info,
             hiddenText: this.insertComplaintForm.value.hiddenText,
-            like: 0,
-            dislike: 0,
+            likes: 0,
+            dislikes: 0,
             expanded: false
           };
 

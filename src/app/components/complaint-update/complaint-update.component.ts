@@ -47,7 +47,7 @@ export class ComplaintUpdateComponent implements OnInit {
 
   username = localStorage.getItem('username') || 'Visitante';
 
-  complaintToUpdate: { imgUrl: string; userEmail: string; id: string; title: string; hiddenText: string; info: string ; time: string; like: number; dislike: number; expanded: boolean, status: string} = { id: '', userEmail: '', imgUrl: '', title: '', info: '', hiddenText: '', time: '', like: 0, dislike: 0, expanded: false, status: '' };
+  complaintToUpdate: { imgUrl: string; userEmail: string; id: string; title: string; hiddenText: string; info: string ; time: string; likes: number; dislikes: number; expanded: boolean, status: string} = { id: '', userEmail: '', imgUrl: '', title: '', info: '', hiddenText: '', time: '', likes: 0, dislikes: 0, expanded: false, status: '' };
 
   status: string = this.complaintToUpdate.status || '';
 
@@ -115,8 +115,8 @@ export class ComplaintUpdateComponent implements OnInit {
                 hiddenText: this.updateComplaintForm.value.hiddenText,
                 id: this.complaintToUpdate.id,
                 time: this.complaintToUpdate.time,
-                like: this.complaintToUpdate.like,
-                dislike: this.complaintToUpdate.dislike,
+                likes: this.complaintToUpdate.likes,
+                dislikes: this.complaintToUpdate.dislikes,
                 expanded: this.complaintToUpdate.expanded,
                 status: this.status
               };

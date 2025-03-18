@@ -7,7 +7,7 @@ import { Complaints } from '../models/complaints.model';
   providedIn: 'root' // Disponibiliza o serviço em toda a aplicação.
 })
 export class ComplaintsService {
-  private apiUrl = 'http://localhost:3000/complaints'; // URL do db.json
+  private apiUrl = 'http://localhost:8080/complaints'; // URL do db.json
 
   // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP.
   constructor(private http: HttpClient) {}
@@ -28,7 +28,7 @@ export class ComplaintsService {
   }
 
   updateComplaint(complaint: Complaints) {
-    return this.http.put<Complaints>(`http://localhost:3000/complaints/${complaint.id}`, complaint);
+    return this.http.put<Complaints>(`http://localhost:8080/complaints/${complaint.id}`, complaint);
   }
 
 }
