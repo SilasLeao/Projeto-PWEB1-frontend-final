@@ -1,4 +1,12 @@
 # JPOnline
+Integrantes:
+- Silas Leão 
+- Kauã Victor
+- João Vittor
+
+Back-end:
+- https://github.com/SilasLeao/Projeto-PWEB1-backend-final
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
 
