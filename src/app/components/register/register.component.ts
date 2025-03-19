@@ -3,7 +3,7 @@ import {Router, RouterLink} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {UsersService} from '../../services/users.service';
+import {MessageService} from '../../services/message.service';
 
 
 // Componente responsável pelo registro de novos usuários.
@@ -19,23 +19,22 @@ export class RegisterComponent {
   username: string = '';
   email: string = '';
   password: string = '';
-  errorMessage: string = ''; // Mensagem de erro a ser exibida em caso de falha
 
   // Construtor do componente, injeta o HttpClient para fazer requisições HTTP e o Router para permitir roteamento entre as páginas
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private messageService: MessageService) {}
 
 
   registerUser() {
     // Validação básica de preenchimento dos campos
     if (!this.username || !this.email || !this.password) {
-      this.errorMessage = 'Por favor, preencha todos os campos.';
+      this.messageService.showMessage('Por favor, preencha todos os campos.', 'error');
       return;
     }
 
     // Validação de email (usando expressão regular)
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!emailRegex.test(this.email)) {
-      this.errorMessage = 'Por favor, insira um email válido.';
+      this.messageService.showMessage('Por favor, insira um email válido.', 'error');
       return;
     }
     // Chama o backend para verificar se o email já está registrado
@@ -43,7 +42,7 @@ export class RegisterComponent {
       next: (isEmailTaken) => {
         // Se o email já estiver registrado, exibe a mensagem de erro
         if (isEmailTaken) {
-          this.errorMessage = 'Este email já está cadastrado.';
+          this.messageService.showMessage('Este email já está cadastrado.', 'error');
         } else {
           // Caso o email não esteja registrado, faz o cadastro do usuário
           const newUser = {
@@ -62,14 +61,14 @@ export class RegisterComponent {
               this.router.navigate(['/feed']);
             },
             error: (err) => {
-              this.errorMessage = 'Erro ao cadastrar usuário. Tente novamente.';
+              this.messageService.showMessage('Erro ao cadastrar usuário. Tente novamente.', 'error');
               console.error(err);
             }
           });
         }
       },
       error: (err) => {
-        this.errorMessage = 'Erro ao verificar email. Tente novamente.';
+        this.messageService.showMessage('Erro ao verificar email. Tente novamente.', 'error');
         console.error(err);
       }
     });

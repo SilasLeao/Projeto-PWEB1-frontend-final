@@ -10,6 +10,7 @@ import {NgIf} from '@angular/common';
 import { FormService } from '../../services/form.service';
 import { ImageUploadService } from '../../services/image-upload.service';
 import { UsersService } from '../../services/users.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-complaint-update',
@@ -57,6 +58,7 @@ export class ComplaintUpdateComponent implements OnInit {
   // serviço de upload de imagens.
   constructor(private fb: FormBuilder,
               private complaintsService: ComplaintsService,
+              private messageService: MessageService,
               private formService: FormService,
               private imageUploadService: ImageUploadService,
               private usersService: UsersService
@@ -128,6 +130,7 @@ export class ComplaintUpdateComponent implements OnInit {
                   this.updateComplaintForm.reset();
                   this.selectedFile = null;
                   this.closeForm();
+                  this.messageService.showMessage('Denúncia atualizada com sucesso.', 'success');
                 },
                 (error) => console.error('Erro ao atualizar denúncia:', error)
               );
@@ -154,6 +157,7 @@ export class ComplaintUpdateComponent implements OnInit {
               this.updateComplaintForm.reset();
               this.selectedFile = null;
               this.closeForm();
+              this.messageService.showMessage('Denúncia atualizada com sucesso.', 'success');
             },
             (error) => {
               console.error('Erro ao atualziar denúncia:', error);

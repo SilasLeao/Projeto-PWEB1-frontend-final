@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Complaints } from '../models/complaints.model';
 import {UsersService} from './users.service';
 import {FormService} from './form.service';
+import { MessageService } from '../services/message.service';
 
 @Injectable({
   providedIn: 'root' // Disponibiliza o serviço em toda a aplicação.
@@ -15,7 +16,7 @@ export class ComplaintsService {
   dislikedComplaints = new Set<string>();
   userId: string = '';
   // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP.
-  constructor(private http: HttpClient, private usersService: UsersService, private formService: FormService) {}
+  constructor(private http: HttpClient, private usersService: UsersService, private formService: FormService, private messageService: MessageService) {}
 
   loadUserLikes() {
     const username = localStorage.getItem('username');
@@ -28,7 +29,7 @@ export class ComplaintsService {
         this.likedComplaints = new Set(users[0].likedComplaints.map((post: { id: string; }) => post.id));
         this.dislikedComplaints = new Set(users[0].dislikedComplaints.map((post: { id: string; }) => post.id));
       }
-    }, error => console.error('Erro ao buscar usuário:', error));
+    });
   }
 
   // Incrementa o número de "likes" de uma postagem e atualiza no JSON-Server.
@@ -83,7 +84,7 @@ export class ComplaintsService {
   deleteComplaint(complaints: Complaints, complaintsList: Complaints[]) {
     this.usersService.getUserById(this.userId).subscribe(user => {
       if (!user || user.email !== complaints.userEmail) {
-        alert('Você não tem permissão para excluir esta denúncia.');
+        this.messageService.showMessage('Você não tem permissão para excluir esta denúncia!', 'error');
         return;
       }
 
@@ -94,7 +95,7 @@ export class ComplaintsService {
           () => {
             // Se a requisição for bem-sucedida, remover a denúncia da lista localmente
             complaintsList = complaintsList.filter(c => c.id !== complaints.id);
-            console.log('Denúncia excluída com sucesso');
+            this.messageService.showMessage('Denúncia excluída com sucesso.', 'success');
           },
           error => console.error('Erro ao excluir denúncia:', error)
         );
@@ -116,7 +117,7 @@ export class ComplaintsService {
   openForm(complaints: Complaints) {
     this.usersService.getUserById(this.userId).subscribe(user => {
       if (!user || user.email !== complaints.userEmail) {
-        alert('Você não tem permissão para editar esta denúncia.');
+        this.messageService.showMessage('Você não tem permissão para editar esta denúncia!', 'error');
         return;
       }
 

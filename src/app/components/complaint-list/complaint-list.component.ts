@@ -9,6 +9,7 @@ import {FormService} from '../../services/form.service';
 import { ComplaintComponent } from '../complaint/complaint.component';
 import {UsersService} from '../../services/users.service';
 
+
 // Componente responsável pela listagem de denúncias feitas pelos usuários.
 @Component({
   selector: 'app-complaint-list',
@@ -24,10 +25,6 @@ import {UsersService} from '../../services/users.service';
 export class ComplaintListComponent implements OnInit {
   // Lista de denúncias recebidas como entrada do componente pai.
   @Input() complaintsList: Complaints[] = [];
-
-
-
-
 
   // Construtor do componente, injeta o serviço de denúncias (metodos getComplaints, addComplaints e updateLikesDislikes) para interagir com o db.json.
   constructor(private complaintsService: ComplaintsService, private http: HttpClient, private formService: FormService, private usersService: UsersService) {}
