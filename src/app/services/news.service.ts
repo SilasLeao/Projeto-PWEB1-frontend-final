@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {filter, Observable} from 'rxjs';
 import { News } from '../models/news.model';
 
 
@@ -22,12 +22,20 @@ export class NewsService {
     const username = localStorage.getItem('username');
     if (!username) return;
 
+    console.log(username);
+
     this.http.get<any[]>(`http://localhost:8080/users?username=${username}`).subscribe(users => {
-      if (users.length > 0) {
-        this.userId = users[0].id;
+      // Filtra para garantir que só processamos o usuário correto
+      const filteredUsers = users.filter(user => user.username === username);
+
+      if (filteredUsers.length > 0) {
+        const user = filteredUsers[0]; // Pegamos apenas o primeiro usuário correspondente
+        this.userId = user.id;
+        console.log(user);
+
         // Filtra e extrai apenas os IDs dos likedPosts e dislikedPosts
-        this.likedPosts = new Set(users[0].likedPosts.map((post: { id: string; }) => post.id));
-        this.dislikedPosts = new Set(users[0].dislikedPosts.map((post: { id: string; }) => post.id));
+        this.likedPosts = new Set(user.likedPosts?.map((post: { id: string; }) => post.id) || []);
+        this.dislikedPosts = new Set(user.dislikedPosts?.map((post: { id: string; }) => post.id) || []);
       }
     }, error => console.error('Erro ao buscar usuário:', error));
   }

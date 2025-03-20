@@ -18,18 +18,28 @@ export class ComplaintsService {
   // Construtor do serviço, injeta o HttpClient para fazer requisições HTTP.
   constructor(private http: HttpClient, private usersService: UsersService, private formService: FormService, private messageService: MessageService) {}
 
+
+
   loadUserLikes() {
     const username = localStorage.getItem('username');
     if (!username) return;
 
+    console.log(username);
+
     this.http.get<any[]>(`http://localhost:8080/users?username=${username}`).subscribe(users => {
-      if (users.length > 0) {
-        this.userId = users[0].id;
-        // Filtra e extrai apenas os IDs dos likedPosts e dislikedPosts
-        this.likedComplaints = new Set(users[0].likedComplaints.map((post: { id: string; }) => post.id));
-        this.dislikedComplaints = new Set(users[0].dislikedComplaints.map((post: { id: string; }) => post.id));
+      // Filtra para garantir que só processamos o usuário correto
+      const filteredUsers = users.filter(user => user.username === username);
+
+      if (filteredUsers.length > 0) {
+        const user = filteredUsers[0]; // Pegamos apenas o primeiro usuário correspondente
+        this.userId = user.id;
+        console.log(user);
+
+        // Filtra e extrai apenas os IDs dos likedComplaints e dislikedComplaints
+        this.likedComplaints = new Set(user.likedComplaints.map((post: { id: string; }) => post.id));
+        this.dislikedComplaints = new Set(user.dislikedComplaints.map((post: { id: string; }) => post.id));
       }
-    });
+    }, error => console.error('Erro ao buscar usuário:', error));
   }
 
   // Incrementa o número de "likes" de uma postagem e atualiza no JSON-Server.
