@@ -56,7 +56,7 @@ export class RegisterComponent {
           // Enviar o novo usuário para o backend
           this.http.post('http://localhost:8080/users', newUser).subscribe({
             next: () => {
-              alert('Cadastro realizado com sucesso!');
+              this.messageService.showMessage('Cadastro realizado com sucesso!', 'success');
               localStorage.setItem('username', this.username);
               this.router.navigate(['/feed']);
             },
